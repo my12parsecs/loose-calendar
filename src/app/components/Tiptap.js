@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
+import HardBreak from '@tiptap/extension-hard-break'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +14,11 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 const Tiptap = ({ selectedDate, setSelectedDate, selectedDay, isToday }) => {
     console.log(selectedDate);
     
-    
+    // const CustomHardBreak = HardBreak.extend({
+    //     renderText() {
+    //       return '\n'
+    //     },
+    //   })
     
   const editor = useEditor({
     extensions: [
@@ -21,6 +26,7 @@ const Tiptap = ({ selectedDate, setSelectedDate, selectedDay, isToday }) => {
         Placeholder.configure({
           placeholder: 'Write your memo for the day...',
         }),
+        // CustomHardBreak
     ],
     content: '',
     onUpdate: ({ editor }) => {

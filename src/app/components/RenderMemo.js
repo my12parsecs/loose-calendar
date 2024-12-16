@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { generateHTML } from '@tiptap/core'
-
 import StarterKit from "@tiptap/starter-kit";
+
+import DOMPurify from "dompurify";
 
 export default function RenderMemo({certainDate}) {
 
@@ -15,15 +16,20 @@ export default function RenderMemo({certainDate}) {
         const localStorageContent = JSON.parse(localStorage.getItem(`looseCal-${certainDate}`))
 
         if(localStorageContent && localStorageContent.content){
-            setDayMemo(generateHTML(localStorageContent.content[0], [StarterKit]));
+            const generatedHTML = generateHTML(localStorageContent, [StarterKit]);
+            const sanitizedHTML = DOMPurify.sanitize(generatedHTML);
+            setDayMemo(sanitizedHTML);
+
+            
+            console.log(sanitizedHTML);
         }
 
-    }, [])
+    }, [certainDate])
 
 
     return (
         <div className="day-right">
-            {dayMemo}
+            <div className="day-right-inner" dangerouslySetInnerHTML={{ __html: dayMemo }}></div>
         </div>
     )
 }

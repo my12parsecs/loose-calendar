@@ -65,7 +65,7 @@ export default function Home() {
 
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
-  console.log("selectedDate", selectedDate);
+  // console.log("selectedDate", selectedDate);
 
   useEffect(()=>{
     selectedDate && window.history.replaceState({ selectedDate }, "", "/");
@@ -82,7 +82,7 @@ export default function Home() {
 
     {!selectedDate ? (
       thisWeek.map(day => {
-        console.log(day.date.slice(0, 10), thisWeekToday);
+        // console.log(day.date.slice(0, 10), thisWeekToday);
 
         let isToday = day.date.slice(0, 10) === thisWeekToday;
 
