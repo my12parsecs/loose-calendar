@@ -64,7 +64,7 @@
 .day{
   display: flex;
   border-top: 0.5px solid rgb(54, 54, 54);
-  height: calc(calc(100% - 35px)/7);
+  height: calc(100%/7);
   min-height: 60px;
   cursor: pointer;
 }
