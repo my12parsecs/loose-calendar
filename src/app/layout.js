@@ -1,16 +1,7 @@
-import { Geist, Geist_Mono, Inter, Cardo } from "next/font/google";
+import { Inter, Cardo } from "next/font/google";
 import "./stylesheets/globals.css";
 import Nav from "./components/Nav";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,7 +17,7 @@ const cardo = Cardo({
 
 export const metadata = {
   title: "Loose Calendar for the Week",
-  description: "Loose Calendar for the Week",
+  description: "Loose Calendar for the Week is a Calendar where each day has a little memo. You just use it for this week.",
 };
 
 export default function RootLayout({ children }) {

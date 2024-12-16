@@ -86,3 +86,14 @@
     height: 17px;
     filter: opacity(0.8);
 }
+
+
+
+@media (max-width: 370px) {
+    .nav-left{
+        display: none;
+    }
+    .nav-title{
+        padding-left: 10px;
+    }
+}

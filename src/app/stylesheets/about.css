@@ -1,0 +1,55 @@
+
+
+
+
+.about-page{
+    width: 100%;
+    max-width: 500px;
+    min-height: 100%;
+    margin: auto;
+    border-left: 0.5px solid rgb(54, 54, 54);
+    border-right: 0.5px solid rgb(54, 54, 54);
+    /* border-bottom: 0.5px solid rgb(54, 54, 54); */
+    padding: 35px 15px 15px 15px;
+}
+
+.about-page > h1{
+    font-size: 2rem;
+    font-family: var(--font-cardo);
+}
+.about-page > h2{
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--font-inter);
+    /* font-family: var(--font-cardo); */
+}
+.about-page > p{
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--font-inter);
+    /* font-family: var(--font-cardo); */
+    margin-top: 30px;
+    line-height: 23px;
+}
+
+.about-page > div{
+    margin-top: 30px;
+}
+
+.go-to-calendar-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 40px;
+    margin: auto;
+    margin-top: 50px !important;
+    font-family: var(--font-cardo);
+    font-size: 1.3rem;
+    /* text-decoration: underline; */
+    border: 0.5px solid rgb(54, 54, 54);
+    border-radius: 4px;
+}
+.go-to-calendar-button:hover{
+    filter: brightness(1.4);
+}
