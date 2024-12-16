@@ -13,7 +13,7 @@
 html,
 body {
   height: 100dvh;
-  height: 100%;
+  /* height: 100%; */
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -59,6 +59,18 @@ a {
 }
 .ProseMirror:focus {
   outline: none;
+}
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #8d8d8d;
+  pointer-events: none;
+  height: 0;
+}
+@media (prefers-color-scheme: light) {
+  .ProseMirror p.is-editor-empty:first-child::before {
+    color: #adb5bd;
+  }
 }
 
 
