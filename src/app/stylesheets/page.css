@@ -60,6 +60,7 @@
   margin: auto;
   border-left: 0.5px solid rgb(54, 54, 54);
   border-right: 0.5px solid rgb(54, 54, 54);
+  border-bottom: 0.5px solid rgb(54, 54, 54);
 }
 .day{
   display: flex;

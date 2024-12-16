@@ -11,6 +11,7 @@
     align-items: center;
     border-left: 0.5px solid rgb(54, 54, 54);
     border-right: 0.5px solid rgb(54, 54, 54);
+    border-top: 0.5px solid rgb(54, 54, 54);
 }
 .nav-left{
     width: 65px;
