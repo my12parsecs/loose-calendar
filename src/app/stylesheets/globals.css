@@ -40,3 +40,26 @@ a {
     color-scheme: dark;
   }
 }
+
+
+
+
+
+
+.tiptap{
+  width: 400px;
+  min-height: 300px;
+  margin: auto;
+  margin-top: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /* background-color: red !important; */
+}
+.ProseMirror:focus {
+  outline: none;
+}
+
+
+
+
+

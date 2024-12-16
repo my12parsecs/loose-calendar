@@ -1,95 +1,124 @@
+'use client'
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import styles from "./page.module.css";
+import { useRouter } from 'next/navigation'
+
+import jstz from 'jstimezonedetect';
+import getUserLocale from 'get-user-locale';
+import dayjs from 'dayjs';
+
+import StarterKit from "@tiptap/starter-kit";
+import { generateHTML } from '@tiptap/core'
+
+import "./stylesheets/page.css";
+import Tiptap from "./components/Tiptap";
+import RenderMemo from "./components/RenderMemo";
+
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const router = useRouter()
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+  // ユーザーのタイムゾーンを取得 Asia/Tokyoとか
+  var tz = jstz.determine();
+  const userTimezone = tz.name();
+  // console.log(userTimezone);
+
+  // ユーザーのLocaleを取得 光の場合はen-USだった
+  const userLocale = getUserLocale();
+  // console.log(userLocale);
+  const userLanguage = userLocale.slice(0, 2);
+  // const userLanguage = "ja"
+  // console.log(userLanguage);
+  
+
+  var utc = require("dayjs/plugin/utc");
+  var timezone = require("dayjs/plugin/timezone"); // dependent on utc plugin
+  require(`dayjs/locale/${userLanguage}`);
+  dayjs.locale(userLanguage);
+  dayjs.extend(utc)
+  dayjs.extend(timezone)
+  // console.log(dayjs().tz(userTimezone).format());
+  // 1日後の日付を取得
+  // console.log(dayjs().tz(userTimezone).add(1, 'day').format());
+  // 1日前の日付を取得
+  // console.log(dayjs().tz(userTimezone).subtract(1, 'day').format());
+  // 曜日を取得
+  // console.log(dayjs().tz(userTimezone).format("ddd"));
+
+
+  // console.log(dayjs().tz(userTimezone).format("d"));
+  const thisWeekToday = dayjs().tz(userTimezone).format().slice(0, 10);
+  const thisWeekSunday = dayjs().tz(userTimezone).startOf('week').format();
+  // console.log(thisWeekSunday);
+  
+  let thisWeek = []
+  for (let i = 0; i < 7; i++) {
+    thisWeek.push({
+      date: dayjs().tz(userTimezone).startOf('week').add(i, 'day').format(),
+      day: dayjs().tz(userTimezone).startOf('week').add(i, 'day').format("ddd"),
+    });
+  }
+  // console.log(thisWeek);
+
+
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDay, setSelectedDay] = useState("");
+  console.log("selectedDate", selectedDate);
+  
+
+  return (
+    <div className="main">
+
+    {/* {!selectedDate ? ( */}
+      {thisWeek.map(day => {
+        console.log(day.date.slice(0, 10), thisWeekToday);
+
+        let isToday = day.date.slice(0, 10) === thisWeekToday;
+
+        let routeMonth = day.date.slice(5, 7);
+        let routeDay = day.date.slice(8, 10);
+
+        return (
+          <div key={day.date} className="day"
+          // onClick={() => {
+          //   setSelectedDate(day.date.slice(0, 10))
+          //   setSelectedDay(day.day)
+          //   }}
+          onClick={() => router.push(`/${routeMonth}${routeDay}`)}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            <div className={`day-left ${isToday ? "day-left-today" : ""}`}>
+              <div className="day-left-date">{day.date.slice(8, 10)}</div>
+              <div className="day-left-day">{day.day}</div>
+            </div>
+            <RenderMemo certainDate={day.date.slice(5, 10)} />
+          </div>
+        );
+      })
+      }
+    {/* ) : (
+      <Tiptap selectedDate={selectedDate} setSelectedDate={setSelectedDate} selectedDay={selectedDay} />
+    )} */}
+
+ 
+      {/* {thisWeek.map(day => {
+
+        console.log(day.date.slice(0, 10), thisWeekToday);
+        
+        let isToday = day.date.slice(0, 10) === thisWeekToday;
+
+        return (
+          <div key={day.date} onClick={() => setSelectedDate(day.date.slice(0, 10))} className="day">
+            <div className={`day-left ${isToday ? "day-left-today" : ""}`}>
+              <div className="day-left-date">{day.date.slice(8, 10)}</div>
+              <div className="day-left-day">{day.day}</div>
+            </div>
+            <RenderMemo certainDate={day.date.slice(0, 10)} />
+          </div>
+        )
+      })}
+      <Tiptap selectedDate={selectedDate} /> */}
     </div>
   );
 }
