@@ -70,14 +70,22 @@
 }
 .day-left{
   width: 45px;
+  min-width: 45px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: var(--font-cardo);
 }
 .day-left-today{
   background-color: rgb(54, 54, 54);
  /* outline: 1px solid green; */
+}
+@media (prefers-color-scheme: light) {
+  .day-left-today{
+    background-color: rgb(71, 71, 71);
+    color: white;
+  }
 }
 .day-left-date{
   font-size: 1.6rem;
@@ -85,14 +93,18 @@
   justify-content: center;
 }
 .day-left-day{
-  font-size: 1rem;
+  font-size: 0.8rem;
   display: flex;
   justify-content: center;
+  margin-top: -4px;
 }
 .day-right{
   width: flex-grow;
-  padding: 3px;
+  padding: 5px;
   border-left: 0.5px solid rgb(54, 54, 54);
+  font-size: 1rem;
+  font-family: var(--font-inter);
+  font-weight: 400;
 }
 
 
@@ -106,17 +118,65 @@
   flex-direction: column;
   align-items: center;
 }
-.editor-date{
+.editor-date-container{
   width: 100%;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 0.5px solid rgb(54, 54, 54);
+}
+.editor-date-container-today{
+  background-color: rgb(54, 54, 54);
+}
+@media (prefers-color-scheme: light) {
+  .editor-date-container-today{
+    background-color: rgb(71, 71, 71);
+    color: white;
+  }
+}
+.editor-back-button{
+  width: 35px;
   height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 0.5px solid rgb(54, 54, 54);
+  cursor: pointer;
+}
+.editor-back-button:hover{
+  background-color: rgb(35, 35, 35);
+}
+.editor-date-container-today .editor-back-button:hover{
+  background-color: rgb(85, 85, 85);
+}
+@media (prefers-color-scheme: light) {
+  .editor-date-container-today .editor-back-button:hover{
+    background-color: rgb(79, 79, 79);
+  }
+  .editor-back-button:hover{
+    background-color: rgb(244, 244, 244);
+  }
+  .editor-back-button-icon{
+    /* color: rgb(70, 70, 70); */
+  }
+}
+.editor-back-button-icon{
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.editor-date{
+  font-family: var(--font-inter);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+.editor-date-spacer{
+  width: 35px;
 }
 .editor-content{
   flex-grow: 1;
   width: 100%;
+  border-top: 0.5px solid rgb(54, 54, 54);
+  padding: 10px;
 }
 .done-button-container{
   width: 100%;
@@ -139,10 +199,6 @@
 }
 
 @media (prefers-color-scheme: light) {
-  .day-left-today{
-    background-color: rgb(0, 0, 0);
-    color: white;
-  }
   .done-button{
     background-color: black;
     color: white;

@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Cardo } from "next/font/google";
 import "./stylesheets/globals.css";
 import Nav from "./components/Nav";
 
@@ -17,6 +17,12 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const cardo = Cardo({
+  weight: "400",
+  variable: "--font-cardo",
+  subsets: ["latin"],
+});
+
 
 export const metadata = {
   title: "Loose Calendar for the Week",
@@ -27,7 +33,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
-      <body className={`${inter.variable}`}>
+      <body className={`${inter.variable} ${cardo.variable}`}>
         <Nav />
         {children}
       </body>

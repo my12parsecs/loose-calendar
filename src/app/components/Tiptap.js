@@ -1,14 +1,17 @@
 'use client'
 
 import { useEffect } from 'react';
-// import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
-const Tiptap = ({ selectedDate, selectedDay }) => {
-    // const router = useRouter()
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+
+const Tiptap = ({ selectedDate, setSelectedDate, selectedDay, isToday }) => {
+    console.log(selectedDate);
+    
     
     
   const editor = useEditor({
@@ -33,11 +36,17 @@ const Tiptap = ({ selectedDate, selectedDay }) => {
   return (
     selectedDate ? (
         <div className='editor-container'>
-            <div className='editor-date'>{selectedDate.slice(0, 2)}/{selectedDate.slice(3, 5)} {selectedDay}</div>
+            <div className={`editor-date-container ${isToday ? "editor-date-container-today" : ""}`}>
+                <div className='editor-back-button' onClick={() => setSelectedDate("")}>
+                    <FontAwesomeIcon icon={faChevronLeft} className='editor-back-button-icon' />
+                </div>
+                <div className='editor-date'>{selectedDate.slice(5, 7)}/{selectedDate.slice(8, 10)} {selectedDay}</div>
+                <div className='editor-date-spacer'></div>
+            </div>
             <EditorContent editor={editor} className='editor-content' />
             <div className='done-button-container'>
-                {/* <div className='done-button' onClick={() => router.push("/")}>Done</div> */}
-                <Link href="/" className='done-button'>Done</Link>
+                <div className='done-button' onClick={() => setSelectedDate("")}>Done</div>
+                {/* <Link href="/" className='done-button'>Done</Link> */}
             </div>
         </div>
     ) : null

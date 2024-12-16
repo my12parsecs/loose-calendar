@@ -66,13 +66,22 @@ export default function Home() {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
   console.log("selectedDate", selectedDate);
-  
+
+  useEffect(()=>{
+    selectedDate && window.history.replaceState({ selectedDate }, "", "/");
+  }, [])
+
+  useEffect(() => {
+    // const isBrowserAction = window.history.state?.selectedDate === selectedDate;
+    // if (isBrowserAction) return;
+    !selectedDate && window.history.pushState({ selectedDate }, "", "/");
+  }, [selectedDate])
 
   return (
     <div className="main">
 
-    {/* {!selectedDate ? ( */}
-      {thisWeek.map(day => {
+    {!selectedDate ? (
+      thisWeek.map(day => {
         console.log(day.date.slice(0, 10), thisWeekToday);
 
         let isToday = day.date.slice(0, 10) === thisWeekToday;
@@ -82,24 +91,24 @@ export default function Home() {
 
         return (
           <div key={day.date} className="day"
-          // onClick={() => {
-          //   setSelectedDate(day.date.slice(0, 10))
-          //   setSelectedDay(day.day)
-          //   }}
-          onClick={() => router.push(`/${routeMonth}${routeDay}`)}
+          onClick={() => {
+            setSelectedDate(day.date.slice(0, 10))
+            setSelectedDay(day.day)
+            window.history.pushState({selectedDate}, '', `/${routeMonth}${routeDay}`)
+            }}
+          // onClick={() => router.push(`/${routeMonth}${routeDay}`, {shallow: true})}
           >
             <div className={`day-left ${isToday ? "day-left-today" : ""}`}>
               <div className="day-left-date">{day.date.slice(8, 10)}</div>
               <div className="day-left-day">{day.day}</div>
             </div>
-            <RenderMemo certainDate={day.date.slice(5, 10)} />
+            <RenderMemo certainDate={day.date.slice(0, 10)} />
           </div>
         );
       })
-      }
-    {/* ) : (
-      <Tiptap selectedDate={selectedDate} setSelectedDate={setSelectedDate} selectedDay={selectedDay} />
-    )} */}
+    ) : (
+      <Tiptap selectedDate={selectedDate} setSelectedDate={setSelectedDate} selectedDay={selectedDay} isToday={selectedDate === thisWeekToday} />
+    )}
 
  
       {/* {thisWeek.map(day => {

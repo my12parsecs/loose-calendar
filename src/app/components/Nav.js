@@ -5,7 +5,7 @@ export default function Nav() {
 
     return (
     <div className="nav">
-            <div className="nav-title">Loose Calendar FTW</div>
+            <div className="nav-title">Loose Calendar <span>FTW</span></div>
         </div>
     )
 }
