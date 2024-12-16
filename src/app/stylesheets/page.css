@@ -100,7 +100,7 @@
   margin-top: -4px;
 }
 .day-right{
-  width: flex-grow;
+  flex-grow: 1;
   max-width: 100%;
   /* padding: 5px; */
   border-left: 0.5px solid rgb(54, 54, 54);
@@ -108,14 +108,15 @@
   font-family: var(--font-inter);
   font-weight: 400;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   overflow: hidden;
 
 }
 .day-right-inner{
-  width: 96%;
-  height: 93%;
+  margin: 4px;
+  width: 100%;
+  /* height: 93%; */
   /* margin-left: 5px; */
   /* margin-right: 5px; */
   overflow: hidden;
