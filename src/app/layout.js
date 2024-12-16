@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
-      <body className={`${inter.variable} ${cardo.variable}`}>
+      <body className={`${inter.variable} ${cardo.variable}`} style={{height: "100dvh"}}>
         <Nav />
         {children}
       </body>
