@@ -1,4 +1,6 @@
+"use client"
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 import jstz from 'jstimezonedetect';
@@ -8,11 +10,18 @@ import "../stylesheets/about.css";
 
 export default function About() {
 
-    var tz = jstz.determine();
-    const userTimezone = tz.name();
+    const [userTimezone, setUserTimezone] = useState("");
+    const [userLanguage, setUserLanguage] = useState("");
 
-    const userLocale = getUserLocale();
-    const userLanguage = userLocale.slice(0, 2);
+    useEffect(()=>{
+        var tz = jstz.determine();
+        setUserTimezone(tz.name());
+    
+        const userLocale = getUserLocale();
+        setUserLanguage(userLocale.slice(0, 2));
+    }, [])
+
+
     
     return (
     <div className="about-page">
