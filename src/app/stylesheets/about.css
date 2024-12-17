@@ -18,12 +18,14 @@
     font-size: 2rem;
     font-weight: 400;
     font-family: var(--font-cardo);
+    line-height: 1.05;
 }
 .about-page > h2{
     font-size: 1rem;
     font-weight: 400;
     font-family: var(--font-inter);
     /* font-family: var(--font-cardo); */
+    margin-top: 10px;
 }
 .about-page > p{
     font-size: 1rem;

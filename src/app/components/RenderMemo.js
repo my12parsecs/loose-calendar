@@ -19,9 +19,7 @@ export default function RenderMemo({certainDate}) {
             const generatedHTML = generateHTML(localStorageContent, [StarterKit]);
             const sanitizedHTML = DOMPurify.sanitize(generatedHTML);
             setDayMemo(sanitizedHTML);
-
-            
-            console.log(sanitizedHTML);
+            // console.log(sanitizedHTML);
         }
 
     }, [certainDate])

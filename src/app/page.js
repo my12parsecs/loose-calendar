@@ -25,10 +25,12 @@ export default function Home() {
   let userTimezone = ""
   let userLanguage = ""
 
-  let thisWeekToday = ""
+  const [thisWeekToday, setThisWeekToday] = useState("")
   let thisWeekSunday = ""
 
   const [thisWeek, setThisWeek] = useState([])
+
+  const [storageValid, setStorageValid] = useState([])
 
   useEffect(()=>{
 
@@ -36,12 +38,9 @@ export default function Home() {
     var tz = jstz.determine();
     userTimezone = tz.name();
 
-    // ユーザーのLocaleを取得 光の場合はen-USだった
+    // ユーザーのLocaleを取得 自分の場合はen-USだった
     const userLocale = getUserLocale();
-    // console.log(userLocale);
     userLanguage = userLocale.slice(0, 2);
-    // const userLanguage = "ja"
-    
 
     var utc = require("dayjs/plugin/utc");
     var timezone = require("dayjs/plugin/timezone"); // dependent on utc plugin
@@ -59,19 +58,12 @@ export default function Home() {
 
 
     // console.log(dayjs().tz(userTimezone).format("d"));
-    thisWeekToday = dayjs().tz(userTimezone).format().slice(0, 10);
+    setThisWeekToday(dayjs().tz(userTimezone).format().slice(0, 10))
     thisWeekSunday = dayjs().tz(userTimezone).startOf('week').format();
     // console.log("userTimezone", userTimezone);
     // console.log("dayjs()", dayjs());
     // console.log("thisWeekToday", thisWeekToday);
     
-    
-    // for (let i = 0; i < 7; i++) {
-    //   thisWeek.push({
-    //     date: dayjs().tz(userTimezone).startOf('week').add(i, 'day').format(),
-    //     day: dayjs().tz(userTimezone).startOf('week').add(i, 'day').format("ddd"),
-    //   });
-    // }
     const weekData = [];
     for (let i = 0; i < 7; i++) {
       weekData.push({
@@ -80,25 +72,61 @@ export default function Home() {
       });
     }
     setThisWeek(weekData);
+
+    let tempStorageValid = []
+    weekData.map(day => {
+      tempStorageValid.push(day.date.slice(0, 10))
+    })
+    setStorageValid(tempStorageValid)
+    
   
     selectedDate && window.history.replaceState({ selectedDate }, "", "/");
   }, [])
 
 
-
-
   useEffect(() => {
-    // const isBrowserAction = window.history.state?.selectedDate === selectedDate;
-    // if (isBrowserAction) return;
     !selectedDate && window.history.pushState({ selectedDate }, "", "/");
   }, [selectedDate])
 
+
+
+  function cleanLooseCalKeys() {
+    // Regular expression to match keys like "looseCal-XX-YY" (e.g., "looseCal-12-17")
+    const keyPattern = /^looseCal-\d{4}-\d{2}-\d{2}$/;
+  
+    // Loop through all keys in localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+  
+      // Check if the key matches the "looseCal-XX-YY" format
+      if (keyPattern.test(key)) {
+        // Extract the date part (e.g., "12-17")
+        const datePart = key.split("looseCal-")[1];
+  
+        // If the date is NOT in the validDates array, remove it
+        if (!storageValid.includes(datePart)) {
+          localStorage.removeItem(key);
+          console.log(`Removed: ${key}`);
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    if(storageValid.length === 7){
+      cleanLooseCalKeys()
+    }
+  }, [storageValid])
+
+
+
+
   return (
     <div className="main">
+      {/* {console.log(storageValid)} */}
 
     {!selectedDate ? (
       thisWeek.map(day => {
-        // console.log(day.date.slice(0, 10), thisWeekToday);
 
         let isToday = day.date.slice(0, 10) === thisWeekToday;
 
@@ -126,24 +154,6 @@ export default function Home() {
       <Tiptap selectedDate={selectedDate} setSelectedDate={setSelectedDate} selectedDay={selectedDay} isToday={selectedDate === thisWeekToday} />
     )}
 
- 
-      {/* {thisWeek.map(day => {
-
-        console.log(day.date.slice(0, 10), thisWeekToday);
-        
-        let isToday = day.date.slice(0, 10) === thisWeekToday;
-
-        return (
-          <div key={day.date} onClick={() => setSelectedDate(day.date.slice(0, 10))} className="day">
-            <div className={`day-left ${isToday ? "day-left-today" : ""}`}>
-              <div className="day-left-date">{day.date.slice(8, 10)}</div>
-              <div className="day-left-day">{day.day}</div>
-            </div>
-            <RenderMemo certainDate={day.date.slice(0, 10)} />
-          </div>
-        )
-      })}
-      <Tiptap selectedDate={selectedDate} /> */}
     </div>
   );
 }
