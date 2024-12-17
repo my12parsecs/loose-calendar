@@ -2,7 +2,7 @@
 # Loose Calendar for the Week
 ### A Calendar where each day has a little memo
 
-Loose Calendar FTW is calendar where each day has a little memo.
+Loose Calendar FTW is a calendar where each day has a little memo.
 Don't need something fancy and complicated like Google Calendar? Use this!
 
 It stores data in your browser's local storage, none of your data is sent to the server.

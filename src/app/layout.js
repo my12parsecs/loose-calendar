@@ -19,6 +19,26 @@ const cardo = Cardo({
 export const metadata = {
   title: "Loose Calendar for the Week",
   description: "Loose Calendar for the Week is a Calendar where each day has a little memo. You just use it for this week.",
+  keywords: ['loose', 'calendar', 'memo', 'week', 'loose calendar', 'loose calendar for the week'],
+  openGraph: {
+    title: 'Loose Calendar for the Week',
+    description: 'Loose Calendar for the Week is a Calendar where each day has a little memo. You just use it for this week.',
+    url: 'https://loosecal.com',
+    images: [
+      {
+        url: 'https://example.com/image.jpg',
+        width: 800,
+        height: 600,
+        alt: 'Loose Calendar Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Loose Calendar for the Week',
+    description: 'Loose Calendar for the Week is a Calendar where each day has a little memo. You just use it for this week.',
+    images: ['https://example.com/image.jpg'],
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -1,36 +1,24 @@
-"use client"
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 import jstz from 'jstimezonedetect';
 import getUserLocale from 'get-user-locale';
 
 import "../stylesheets/about.css";
+import ClientTimeLocale from "../components/ClientTimeLocale";
+
+
+export const metadata = {
+    title: 'About | Loose Calendar FTW',
+    description: 'About page of Loose Calendar FTW',
+    openGraph: {
+      title: 'About | Loose Calendar FTW',
+      description: 'About page of Loose Calendar FTW',
+    },
+  }
 
 export default function About() {
 
-    const [userTimezone, setUserTimezone] = useState("");
-    const [userLanguage, setUserLanguage] = useState("");
-
-    useEffect(()=>{
-        var tz = jstz.determine();
-        setUserTimezone(tz.name());
-    
-        const userLocale = getUserLocale();
-        setUserLanguage(userLocale.slice(0, 2));
-
-
-        // Override the height of the body to auto
-        const originalStyle = document.body.style.height
-        document.body.style.height = 'auto'
-        return () => {
-            document.body.style.height = originalStyle
-          }
-    }, [])
-
-
-    
     return (
     <div className="about-page" style={{height: '100%', minHeight: 'calc(100dvh - 35px)'}}>
         <h1>Loose Calendar for the Week</h1>
@@ -39,10 +27,7 @@ export default function About() {
         <p>It stores data in your browser's local storage, none of your data is sent to the server. There's no database.</p>
         <p>I made this in a couple of hours, so please tell me if you find any bugs. Especially the timezone/language stuff. It's supposed to reflect your timezone and language, but I'm not sure if it works on all devices.</p>
 
-        <div>
-            <div>Your Timezone: {userTimezone}</div>
-            <div>Your Language: {userLanguage}</div>
-        </div>
+        <ClientTimeLocale />
 
         <div className='go-to-calendar-button-container'>
             <Link href="/" className='go-to-calendar-button'>Go to Loose Calendar</Link>
