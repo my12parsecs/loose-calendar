@@ -24,6 +24,7 @@
     "get-user-locale": "^2.3.2",
     "jstimezonedetect": "^1.0.7",
     "next": "15.1.0",
+    "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
