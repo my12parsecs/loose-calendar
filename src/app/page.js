@@ -20,62 +20,73 @@ export default function Home() {
   const router = useRouter()
 
 
-  // ユーザーのタイムゾーンを取得 Asia/Tokyoとか
-  var tz = jstz.determine();
-  const userTimezone = tz.name();
-  // console.log(userTimezone);
-
-  // ユーザーのLocaleを取得 光の場合はen-USだった
-  const userLocale = getUserLocale();
-  // console.log(userLocale);
-  const userLanguage = userLocale.slice(0, 2);
-  // const userLanguage = "ja"
-  // console.log(userLanguage);
-  
-
-  var utc = require("dayjs/plugin/utc");
-  var timezone = require("dayjs/plugin/timezone"); // dependent on utc plugin
-  require(`dayjs/locale/${userLanguage}`);
-  dayjs.locale(userLanguage);
-  dayjs.extend(utc)
-  dayjs.extend(timezone)
-  // console.log(dayjs().tz(userTimezone).format());
-  // 1日後の日付を取得
-  // console.log(dayjs().tz(userTimezone).add(1, 'day').format());
-  // 1日前の日付を取得
-  // console.log(dayjs().tz(userTimezone).subtract(1, 'day').format());
-  // 曜日を取得
-  // console.log(dayjs().tz(userTimezone).format("ddd"));
-
-
-  // console.log(dayjs().tz(userTimezone).format("d"));
-  const thisWeekToday = dayjs().tz(userTimezone).format().slice(0, 10);
-  const thisWeekSunday = dayjs().tz(userTimezone).startOf('week').format();
-  console.log("userTimezone", userTimezone);
-  
-  console.log("dayjs()", dayjs());
-  
-  console.log("thisWeekToday", thisWeekToday);
-  
-  // console.log(thisWeekSunday);
-  
-  let thisWeek = []
-  for (let i = 0; i < 7; i++) {
-    thisWeek.push({
-      date: dayjs().tz(userTimezone).startOf('week').add(i, 'day').format(),
-      day: dayjs().tz(userTimezone).startOf('week').add(i, 'day').format("ddd"),
-    });
-  }
-  // console.log(thisWeek);
-
-
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
-  // console.log("selectedDate", selectedDate);
+
+  let userTimezone = ""
+  let userLanguage = ""
+
+  let thisWeekToday = ""
+  let thisWeekSunday = ""
+
+  const [thisWeek, setThisWeek] = useState([])
 
   useEffect(()=>{
+
+    // ユーザーのタイムゾーンを取得 Asia/Tokyoとか
+    var tz = jstz.determine();
+    userTimezone = tz.name();
+
+    // ユーザーのLocaleを取得 光の場合はen-USだった
+    const userLocale = getUserLocale();
+    // console.log(userLocale);
+    userLanguage = userLocale.slice(0, 2);
+    // const userLanguage = "ja"
+    
+
+    var utc = require("dayjs/plugin/utc");
+    var timezone = require("dayjs/plugin/timezone"); // dependent on utc plugin
+    require(`dayjs/locale/${userLanguage}`);
+    dayjs.locale(userLanguage);
+    dayjs.extend(utc)
+    dayjs.extend(timezone)
+    // console.log(dayjs().tz(userTimezone).format());
+    // 1日後の日付を取得
+    // console.log(dayjs().tz(userTimezone).add(1, 'day').format());
+    // 1日前の日付を取得
+    // console.log(dayjs().tz(userTimezone).subtract(1, 'day').format());
+    // 曜日を取得
+    // console.log(dayjs().tz(userTimezone).format("ddd"));
+
+
+    // console.log(dayjs().tz(userTimezone).format("d"));
+    thisWeekToday = dayjs().tz(userTimezone).format().slice(0, 10);
+    thisWeekSunday = dayjs().tz(userTimezone).startOf('week').format();
+    // console.log("userTimezone", userTimezone);
+    // console.log("dayjs()", dayjs());
+    // console.log("thisWeekToday", thisWeekToday);
+    
+    
+    // for (let i = 0; i < 7; i++) {
+    //   thisWeek.push({
+    //     date: dayjs().tz(userTimezone).startOf('week').add(i, 'day').format(),
+    //     day: dayjs().tz(userTimezone).startOf('week').add(i, 'day').format("ddd"),
+    //   });
+    // }
+    const weekData = [];
+    for (let i = 0; i < 7; i++) {
+      weekData.push({
+        date: dayjs().tz(userTimezone).startOf("week").add(i, "day").format(),
+        day: dayjs().tz(userTimezone).startOf("week").add(i, "day").format("ddd"),
+      });
+    }
+    setThisWeek(weekData);
+  
     selectedDate && window.history.replaceState({ selectedDate }, "", "/");
   }, [])
+
+
+
 
   useEffect(() => {
     // const isBrowserAction = window.history.state?.selectedDate === selectedDate;

@@ -44,6 +44,7 @@
     height: 40px;
     margin: auto;
     margin-top: 50px !important;
+    margin-bottom: 50px;
     font-family: var(--font-cardo);
     font-size: 1.3rem;
     /* text-decoration: underline; */
