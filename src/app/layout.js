@@ -26,9 +26,9 @@ export const metadata = {
     url: 'https://loosecal.com',
     images: [
       {
-        url: 'https://example.com/image.jpg',
-        width: 800,
-        height: 600,
+        url: 'https://utfs.io/f/XBVzUJO68SmlrX8z5gM13s50u9ZcTLxUedCh6PlDAnz72REm',
+        width: 500,
+        height: 500,
         alt: 'Loose Calendar Logo',
       },
     ],
@@ -37,7 +37,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Loose Calendar for the Week',
     description: 'Loose Calendar for the Week is a Calendar where each day has a little memo. You just use it for this week.',
-    images: ['https://example.com/image.jpg'],
+    images: ['https://utfs.io/f/XBVzUJO68SmlrX8z5gM13s50u9ZcTLxUedCh6PlDAnz72REm'],
   },
 };
 
