@@ -10,7 +10,7 @@
     border-left: 0.5px solid rgb(54, 54, 54);
     border-right: 0.5px solid rgb(54, 54, 54);
     /* border-bottom: 0.5px solid rgb(54, 54, 54); */
-    padding: 35px 15px 0px 15px;
+    padding: 35px 15px 20px 15px;
 }
 
 .about-page > h1{
@@ -40,7 +40,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 220px;
+    width: 230px;
     height: 40px;
     margin: auto;
     margin-top: 50px !important;
