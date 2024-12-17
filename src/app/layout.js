@@ -1,4 +1,5 @@
 import { Inter, Cardo } from "next/font/google";
+
 import "./stylesheets/globals.css";
 import Nav from "./components/Nav";
 
@@ -21,6 +22,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}

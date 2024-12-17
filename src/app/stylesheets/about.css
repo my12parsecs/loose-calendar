@@ -5,16 +5,18 @@
 .about-page{
     width: 100%;
     max-width: 500px;
-    height: calc(100dvh - 35px);
+    height: auto !important;
+    min-height: calc(100dvh - 35px);
     margin: auto;
     border-left: 0.5px solid rgb(54, 54, 54);
     border-right: 0.5px solid rgb(54, 54, 54);
     /* border-bottom: 0.5px solid rgb(54, 54, 54); */
-    padding: 35px 15px 20px 15px;
+    padding: 35px 15px 30px 15px;
 }
 
 .about-page > h1{
     font-size: 2rem;
+    font-weight: 400;
     font-family: var(--font-cardo);
 }
 .about-page > h2{
@@ -43,8 +45,7 @@
     width: 230px;
     height: 40px;
     margin: auto;
-    margin-top: 50px !important;
-    margin-bottom: 50px;
+    margin-top: 30px !important;
     font-family: var(--font-cardo);
     font-size: 1.3rem;
     /* text-decoration: underline; */

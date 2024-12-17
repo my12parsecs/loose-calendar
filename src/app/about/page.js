@@ -19,12 +19,20 @@ export default function About() {
     
         const userLocale = getUserLocale();
         setUserLanguage(userLocale.slice(0, 2));
+
+
+        // Override the height of the body to auto
+        const originalStyle = document.body.style.height
+        document.body.style.height = 'auto'
+        return () => {
+            document.body.style.height = originalStyle
+          }
     }, [])
 
 
     
     return (
-    <div className="about-page">
+    <div className="about-page" style={{height: '100%', minHeight: 'calc(100dvh - 35px)'}}>
         <h1>Loose Calendar for the Week</h1>
         <h2>is a Calendar where each day has a little memo.</h2>
         <p>Don't need something fancy and complicated like Google Calendar? Use this!</p>
