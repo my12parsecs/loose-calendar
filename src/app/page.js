@@ -51,6 +51,12 @@ export default function Home() {
   // console.log(dayjs().tz(userTimezone).format("d"));
   const thisWeekToday = dayjs().tz(userTimezone).format().slice(0, 10);
   const thisWeekSunday = dayjs().tz(userTimezone).startOf('week').format();
+  console.log("userTimezone", userTimezone);
+  
+  console.log("dayjs()", dayjs());
+  
+  console.log("thisWeekToday", thisWeekToday);
+  
   // console.log(thisWeekSunday);
   
   let thisWeek = []
