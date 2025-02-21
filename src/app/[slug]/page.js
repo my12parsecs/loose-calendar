@@ -25,8 +25,8 @@
 
 
 
-// import { redirect } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
-// export default function Slug() {
-//   redirect('/');
-// }
+export default function Slug() {
+  redirect('/');
+}
