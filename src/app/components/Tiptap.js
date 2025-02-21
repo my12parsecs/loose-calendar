@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link'
+import { useDebouncedCallback } from "use-debounce";
 
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
@@ -11,6 +12,8 @@ import HardBreak from '@tiptap/extension-hard-break'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
+import { upsertPost} from '../_actions/actions';
+
 const Tiptap = ({ selectedDate, setSelectedDate, selectedDay, isToday }) => {
     // console.log(selectedDate);
     
@@ -19,30 +22,51 @@ const Tiptap = ({ selectedDate, setSelectedDate, selectedDay, isToday }) => {
     //       return '\n'
     //     },
     //   })
+  const debouncedContent = useDebouncedCallback((content) => {
+    upsertPost({date: selectedDate, content: content})
+  }, 1000);
     
   const editor = useEditor({
     extensions: [
         StarterKit,
         Placeholder.configure({
-          placeholder: 'Write your memo for the day...',
+          placeholder: 'Write your memo for the day... (Login to save memo)',
         }),
         // CustomHardBreak
     ],
     content: '',
     onUpdate: ({ editor }) => {
         const content = editor.getJSON();
-        // localStorage.setItem(`looseCal-${selectedDate}`, content);
-        localStorage.setItem(`looseCal-${selectedDate}`, JSON.stringify(content));
+        // localStorage.setItem(`looseCal-${selectedDate}`, JSON.stringify(content));
+        debouncedContent(JSON.stringify(content));
       },
   })
 
   useEffect(() => {
-    const savedContent = localStorage.getItem(`looseCal-${selectedDate}`);
-    if (savedContent) {
-      editor?.commands.setContent(JSON.parse(savedContent));
-    }else{
-        editor?.commands.setContent("")
-    }
+    // const savedContent = localStorage.getItem(`looseCal-${selectedDate}`);
+    // if (savedContent) {
+    //   editor?.commands.setContent(JSON.parse(savedContent));
+    // }else{
+    //     editor?.commands.setContent("")
+    // }
+    if (!selectedDate || !editor) return;
+
+    const fetchContent = async () => {
+      try {
+        const res = await fetch(`/api/getPost?date=${selectedDate}`);
+        const data = await res.json();
+        
+        if (data.content) {
+          editor.commands.setContent(JSON.parse(data.content));
+        } else {
+          editor.commands.setContent("");
+        }
+      } catch (error) {
+        console.error("Error fetching memo:", error);
+      }
+    };
+
+    fetchContent();
   }, [editor, selectedDate]);
 
   return (

@@ -11,13 +11,15 @@ import dayjs from 'dayjs';
 import StarterKit from "@tiptap/starter-kit";
 import { generateHTML } from '@tiptap/core'
 
-import "./stylesheets/page.css";
-import Tiptap from "./components/Tiptap";
-import RenderMemo from "./components/RenderMemo";
+import "../stylesheets/page.css";
+import Tiptap from "../components/Tiptap";
+import RenderMemo from "../components/RenderMemo";
 
 
 export default function Home() {
   const router = useRouter()
+
+  // const [isOpen, setIsOpen] = useState(false);
 
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedDay, setSelectedDay] = useState("");

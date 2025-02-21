@@ -25,9 +25,9 @@ export default function ClientTimeLocale() {
   }, []);
 
   return (
-    <div>
-      <div>Your Timezone: {userTimezone}</div>
-      <div>Your Language: {userLanguage}</div>
+    <div className="client-time-locale">
+      <div className="client-time"><span>Your Timezone:</span> {userTimezone}</div>
+      <div className="client-locale"><span>Your Language:</span> {userLanguage}</div>
     </div>
   );
 }

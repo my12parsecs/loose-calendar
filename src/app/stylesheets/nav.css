@@ -16,6 +16,25 @@
 .nav-left{
     width: 65px;
 }
+.menu-link-wrapper{
+    width: 40px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-link{
+    width: 20px;
+    height: 20px;
+}
+.menu-icon{
+    width: 20px;
+    height: 20px;
+    filter: opacity(0.8);
+}
 .nav-title {
     text-align: center;
     font-size: 22px;
@@ -87,6 +106,37 @@
     filter: opacity(0.8);
 }
 
+
+.login-button{
+    width: 60px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 150px;
+    /* border: 0.5px solid var(--foreground); */
+    background-color: var(--foreground);
+    color: var(--background);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.logout-button{
+    width: 65px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 150px;
+    /* border: 0.5px solid var(--foreground); */
+    border: 0.5px solid #363636;
+    /* background-color: var(--foreground); */
+    background-color: transparent;
+    color: var(--foreground);
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+}
 
 
 @media (max-width: 370px) {

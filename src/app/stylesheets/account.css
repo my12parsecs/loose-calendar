@@ -1,0 +1,101 @@
+
+
+
+.account-page{
+    width: 100%;
+    max-width: 500px;
+    height: auto !important;
+    min-height: calc(100dvh - 35px);
+    margin: auto;
+    border-left: 0.5px solid rgb(54, 54, 54);
+    border-right: 0.5px solid rgb(54, 54, 54);
+    border-bottom: 0.5px solid rgb(54, 54, 54);
+    /* padding: 35px 15px 30px 15px; */
+    display: flex;
+    flex-direction: column;
+}
+
+.account-page > h1{
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: var(--font-cardo);
+    line-height: 1.05;
+    padding: 35px 15px 10px 15px;
+    border-bottom: 0.5px solid rgb(54, 54, 54);
+}
+@media (prefers-color-scheme: light) {
+    .account-page > h1{
+        border-bottom: 0.5px solid rgb(83, 83, 83);
+    }
+}
+
+
+
+.account-page-content{
+    padding-top: 20px;
+    padding-left: 20px;
+}
+.account-info{
+    display: flex;
+    align-items: center;
+}
+.account-avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+}
+.account-name{
+    margin-left: 20px;
+    font-size: 23px;
+    font-weight: 400;
+    /* font-family: var(--font-cardo); */
+}
+.account-time{
+    margin-top: 20px;
+}
+.client-time-locale{}
+.client-time{
+    font-size: 18px;
+}
+.client-time > span{
+    font-family: var(--font-cardo);
+    margin-right: 1px;
+}
+.client-locale{
+    font-size: 18px;
+}
+.client-locale > span{
+    font-family: var(--font-cardo);
+    margin-right: 3px;
+}
+.account-danger-zone{
+    margin-top: 130px;
+    margin-right: 20px;
+    border: 0.5px solid red;
+    border-radius: 5px;
+    height: 100px;
+    background: rgba(255, 0, 0, 0.181);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.delete-account-button{
+    /* background-color: var(--foreground); */
+    background-color: red;
+    /* color: var(--background); */
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    width: 200px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 200px;
+    border: none;
+    cursor: pointer;
+}
+.delete-account-warning{
+    font-size: 15px;
+    margin-top: 7px;
+}

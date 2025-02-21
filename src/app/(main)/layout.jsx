@@ -1,7 +1,9 @@
 import { Inter, Cardo } from "next/font/google";
 
-import "./stylesheets/globals.css";
-import Nav from "./components/Nav";
+import "../stylesheets/globals.css";
+import Nav from "../components/Nav";
+
+import { AuthButton, SignIn } from "../components/Auth";
 
 
 const inter = Inter({
@@ -44,11 +46,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${cardo.variable}`}>
-        <Nav />
-        {children}
-      </body>
-    </html>
+    <body className={`${inter.variable} ${cardo.variable}`}>
+      <Nav />
+      {children}
+    </body>
   );
 }

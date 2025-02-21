@@ -4,9 +4,9 @@ import Link from 'next/link';
 import jstz from 'jstimezonedetect';
 import getUserLocale from 'get-user-locale';
 
-import "../stylesheets/about.css";
-import ClientTimeLocale from "../components/ClientTimeLocale";
-import ProductHunt from '../components/ProductHunt';
+import "../../stylesheets/about.css";
+import ClientTimeLocale from "../../components/ClientTimeLocale";
+import ProductHunt from '../../components/ProductHunt';
 
 
 export const metadata = {
