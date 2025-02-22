@@ -44,7 +44,10 @@ export async function upsertPost({date, content}){
             }
         },
         update: { content: content },
-        create: { userId: session.user.id, date: date, content: content }
+        create: { userId: session.user.id, date: date, content: content },
+        include: {
+            user: true
+        }
     });
     // revalidatePath(`/posts/${id}`);
 }
