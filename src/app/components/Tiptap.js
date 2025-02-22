@@ -73,7 +73,10 @@ const Tiptap = ({ selectedDate, setSelectedDate, selectedDay, isToday }) => {
     selectedDate ? (
         <div className='editor-container'>
             <div className={`editor-date-container ${isToday ? "editor-date-container-today" : ""}`}>
-                <div className='editor-back-button' onClick={() => setSelectedDate("")}>
+                <div className='editor-back-button' onClick={() => {
+                  upsertPost({date: selectedDate, content: JSON.stringify(editor.getJSON())})
+                  setSelectedDate("")
+                }}>
                     <FontAwesomeIcon icon={faChevronLeft} className='editor-back-button-icon' />
                 </div>
                 <div className='editor-date'>{selectedDate.slice(5, 7)}/{selectedDate.slice(8, 10)} {selectedDay}</div>
@@ -81,7 +84,10 @@ const Tiptap = ({ selectedDate, setSelectedDate, selectedDay, isToday }) => {
             </div>
             <EditorContent editor={editor} className='editor-content' />
             <div className='done-button-container'>
-                <div className='done-button' onClick={() => setSelectedDate("")}>Done</div>
+                <div className='done-button' onClick={() => {
+                  upsertPost({date: selectedDate, content: JSON.stringify(editor.getJSON())})
+                  setSelectedDate("")
+                }}>Done</div>
                 {/* <Link href="/" className='done-button'>Done</Link> */}
             </div>
         </div>
