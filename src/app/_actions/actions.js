@@ -50,4 +50,5 @@ export async function upsertPost({date, content}){
         }
     });
     // revalidatePath(`/posts/${id}`);
+    revalidatePath("/")
 }
