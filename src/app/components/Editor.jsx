@@ -1,5 +1,3 @@
-
-
 'use client'
 
 import { useEffect } from 'react';
@@ -22,7 +20,7 @@ const Editor = ({ selectedDate, setSelectedDate, selectedDay, isToday, clientWee
 
   const debouncedContent = useDebouncedCallback((content) => {
     upsertPost({date: selectedDate, content: content})
-  }, 1000);
+  }, 500);
     
   const editor = useEditor({
     extensions: [
