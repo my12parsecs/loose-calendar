@@ -16,8 +16,6 @@ export default async function Menu() {
 
 // console.log(session.user.id);
 
-  
- 
 //   if (!session?.user) return redirect("/")
 
   return (

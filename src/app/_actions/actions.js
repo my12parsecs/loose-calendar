@@ -5,6 +5,7 @@ import prisma from "../../../lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { auth, signIn, signOut } from "../../../auth"
+import {encrypt, decrypt} from "./encrypt"
 
 
 export async function getSession(){
@@ -28,13 +29,15 @@ export async function getPost(date){
     });  
     const postContent = post?.content
     console.log(postContent);
-    return postContent;
+    return decrypt(postContent);
 }
 
 export async function upsertPost({date, content}){
     
     const session = await auth()
     if (!session?.user) return null
+
+    const encryptedContent = encrypt(content)
 
     await prisma.post.upsert({
         where: { 
@@ -43,7 +46,7 @@ export async function upsertPost({date, content}){
                 date: date
             }
         },
-        update: { content: content },
+        update: { content: encryptedContent },
         create: { userId: session.user.id, date: date, content: content },
         include: {
             user: true

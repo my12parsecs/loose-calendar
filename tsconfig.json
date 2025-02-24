@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/app/(main)/loading.jsx"  ],
   "exclude": [
     "node_modules"
   ]

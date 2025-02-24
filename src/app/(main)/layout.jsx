@@ -46,9 +46,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
   return (
-    <body className={`${inter.variable} ${cardo.variable}`}>
+    <div className={`${inter.variable} ${cardo.variable} body`}>
       <Nav />
       {children}
-    </body>
+    </div>
   );
 }

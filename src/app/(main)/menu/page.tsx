@@ -15,7 +15,7 @@ export default async function Menu() {
         <h1>Menu</h1>
         {!session?.user ? <div></div> : (
           <Link className="menu-link-item" href="/account">
-            <img src={session.user.image} alt="User Avatar" className="menu-avatar" />
+            <img src={session.user.image} alt="" className="menu-avatar" />
             <div className="menu-link-text">Account</div>
           </Link>
         )}

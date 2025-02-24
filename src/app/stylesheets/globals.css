@@ -25,6 +25,10 @@ body {
   height: 100dvh;
 }
 
+.body{
+  height: 100dvh;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -44,6 +48,16 @@ a {
 
 
 
+.page{
+  width: 100%;
+  max-width: 500px;
+  height: auto !important;
+  min-height: calc(100dvh - 35px);
+  margin: auto;
+  border-left: 0.5px solid rgb(54, 54, 54);
+  border-right: 0.5px solid rgb(54, 54, 54);
+  border-bottom: 0.5px solid rgb(54, 54, 54);
+}
 
 
 

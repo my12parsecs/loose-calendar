@@ -59,7 +59,10 @@
 .menu-avatar{
     width: 22px;
     height: 22px;
-    border-radius: 100px;
+    border-radius: 150px;
+    background-color: var(--foreground);
+    border: none;
+    outline: none;
 }
 .menu-icon{
     width: 19px;

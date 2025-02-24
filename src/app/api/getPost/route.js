@@ -1,6 +1,7 @@
 
 import { auth } from "../../../../auth";
 import prisma from "../../../../lib/prisma";
+import {decrypt} from "../../_actions/encrypt"
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
@@ -20,5 +21,5 @@ export async function GET(req) {
     },
   });
 
-  return Response.json({ content: post?.content || "" });
+  return Response.json({ content: decrypt(post?.content) || "" });
 }
