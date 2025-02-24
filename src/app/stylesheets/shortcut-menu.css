@@ -44,8 +44,8 @@
     padding: 12px;
     padding-left: 10px;
     position: fixed;
-    bottom: 10;
-    left: 15;
+    bottom: 10px;
+    left: 15px;
     z-index: 100;
   }
   @media (prefers-color-scheme: light) {
