@@ -32,7 +32,7 @@ export default function Home() {
 
     <div className="footer-nav"></div>
 
-    <ShortcutMenu />
+    <ShortcutMenu which="main" />
 
     </div>
   );
