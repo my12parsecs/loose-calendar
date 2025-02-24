@@ -12,7 +12,8 @@ export function encrypt(text){
 }
 
 export function decrypt(encryptedText) {
-    if(encryptedText.startsWith('{"type":"doc",')) return encryptedText
+    if(!encryptedText) return null
+    if(encryptedText?.startsWith('{"type":"doc",')) return encryptedText
     const parts = encryptedText.split(":");
     const iv = Buffer.from(parts[0], "base64");
     const encrypted = parts[1];

@@ -1,43 +1,3 @@
-// "use client"
-
-// import { generateHTML } from '@tiptap/core'
-// import StarterKit from "@tiptap/starter-kit";
-// import DOMPurify from "dompurify";
-// import Link from 'next/link';
-// import { useState, useEffect } from 'react';
-
-
-
-// export default function RenderMemoC({clientWeek, index}){
-
-//     let weekAndMemo = clientWeek()
-
-
-
-//     return(
-//         <div style={{height: '100%', width: '100%'}}>
-//             {weekAndMemo.thisWeek.map((day, index)=>{
-//                 console.log(day.date);
-//                 console.log(weekAndMemo);
-//                 // const data = apiResponse?.[day.date.slice(0, 10)]
-//                 const generatedHTML = generateHTML(weekAndMemo?.apiResponse?.[day.date.slice(0, 10)]?.content[0], [StarterKit]);
-//                 // const generatedHTML = weekAndMemo?.apiResponse?.[day.date.slice(0, 10)] ? generateHTML(weekAndMemo?.apiResponse?.[day.date.slice(0, 10)]?.content[0], [StarterKit]) : null;
-//                 const sanitizedHTML = generatedHTML ? DOMPurify.sanitize(generatedHTML) : null;
-                
-//                 return(
-//                     <Link href={`/${day.date.slice(0, 10)}`} className='day-right' key={index}>
-//                         <div className="day-right-inner" dangerouslySetInnerHTML={{ __html: sanitizedHTML }}></div>
-//                     </Link>
-//                 )
-//             })}
-//         </div>
-//     )
-// }
-
-
-
-
-
 
 "use client"
 import { generateHTML } from '@tiptap/core'
@@ -46,7 +6,7 @@ import DOMPurify from "dompurify";
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-export default function RenderMemoC({ clientWeek, index }) {
+export default function RenderMemoC({ clientWeek, which, number, index }) {
   const [isLoading, setIsLoading] = useState(true);
   const [weekData, setWeekData] = useState(null);
   const [apiResponse, setApiResponse] = useState(null);
@@ -55,7 +15,7 @@ export default function RenderMemoC({ clientWeek, index }) {
     const loadData = async () => {
       try {
         // Get static week data and fetch function
-        const clientWeekData = clientWeek();
+        const clientWeekData = clientWeek(which, number);
         setWeekData(clientWeekData.thisWeek);
         
         // Fetch API data

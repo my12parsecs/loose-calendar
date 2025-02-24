@@ -1,5 +1,5 @@
-
 "use client"
+
 // ClientWeekData.js - Data fetching utility
 import jstz from 'jstimezonedetect';
 import getUserLocale from 'get-user-locale';
@@ -7,7 +7,8 @@ import dayjs from 'dayjs';
 var utc = require("dayjs/plugin/utc");
 var timezone = require("dayjs/plugin/timezone");
 
-export default function ClientWeek() {
+export default function ClientWeek(which, number) {
+
   // ユーザーのタイムゾーンを取得 Asia/Tokyoとか
   const tz = jstz.determine();
   const userTimezone = tz.name();
@@ -24,12 +25,19 @@ export default function ClientWeek() {
   
   const thisWeekToday = dayjs().tz(userTimezone).format().slice(0, 10);
   
+  let startOfWeek = dayjs().tz(userTimezone).startOf("week")
+  if(which == "next"){
+    startOfWeek = startOfWeek.add(number * 7, "day")
+  }else if(which == "prev"){
+    startOfWeek = startOfWeek.subtract(number * 7, "day")
+  }
+
   // Create week data
   const weekData = [];
   for (let i = 0; i < 7; i++) {
     weekData.push({
-      date: dayjs().tz(userTimezone).startOf("week").add(i, "day").format(),
-      day: dayjs().tz(userTimezone).startOf("week").add(i, "day").format("ddd"),
+      date: startOfWeek.add(i, "day").format(),
+      day: startOfWeek.add(i, "day").format("ddd"),
     });
   }
   

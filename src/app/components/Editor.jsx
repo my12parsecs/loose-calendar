@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link'
 import { useDebouncedCallback } from "use-debounce";
+import dayjs from 'dayjs';
 
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
@@ -14,9 +15,18 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { upsertPost} from '../_actions/actions';
 import { useRouter } from 'next/navigation';
+import ClientToday from './ClientToday';
 
-const Editor = ({ selectedDate, setSelectedDate, selectedDay, isToday, clientWeek }) => {
+const Editor = ({ selectedDate, setSelectedDate, clientWeek }) => {
     const router = useRouter()
+    const editorRef = useRef(null);
+
+    let isToday = false
+    if(ClientToday().today.slice(0, 10) === selectedDate){
+        isToday = true
+    }
+
+    let selectedDay = dayjs(selectedDate).format("ddd")
 
   const debouncedContent = useDebouncedCallback((content) => {
     upsertPost({date: selectedDate, content: content})
@@ -26,7 +36,8 @@ const Editor = ({ selectedDate, setSelectedDate, selectedDay, isToday, clientWee
     extensions: [
         StarterKit,
         Placeholder.configure({
-          placeholder: 'Write your memo for the day... (Login to save memo)',
+        //   placeholder: 'Write your memo for the day... (Login to save memo)',
+            placeholder: ""
         }),
         // CustomHardBreak
     ],
@@ -48,41 +59,67 @@ const Editor = ({ selectedDate, setSelectedDate, selectedDay, isToday, clientWee
     if (!selectedDate || !editor) return;
 
 
-    const fetchContent = async () => {
-        try {
-            const clientWeekData = clientWeek();
-            const res = await clientWeekData.fetchWeekData();   
-                 
-            const data = res[selectedDate]
-            
-            if (data) {
-                editor.commands.setContent(data);
-            } else {
-                editor.commands.setContent("");
-            }
-        }catch(error){
-            console.error("Error fetching content:", error);
-        }}
-
     // const fetchContent = async () => {
-    //   try {
-    //     const res = await fetch(`/api/getPost?date=${selectedDate}`);
-    //     const data = await res.json();
-    //     console.log(data);
+    //     try {
+    //         const clientWeekData = clientWeek();
+    //         const res = await clientWeekData.fetchWeekData();             
+    //         const data = res[selectedDate]
+            
+    //         if (data) {
+    //             editor.commands.setContent(data);
+    //         } else {
+    //             editor.commands.setContent("");
+    //         }
+    //     }catch(error){
+    //         console.error("Error fetching content:", error);
+    //     }}
+
+    const fetchContent = async () => {
+      try {
+        const res = await fetch(`/api/getPost?date=${selectedDate}`);
+        const data = await res.json();        
         
-        
-    //     if (data.content) {
-    //       editor.commands.setContent(JSON.parse(data.content));
-    //     } else {
-    //       editor.commands.setContent("");
-    //     }
-    //   } catch (error) {
-    //     console.error("Error fetching memo:", error);
-    //   }
-    // };
+        if (data.content) {
+          editor.commands.setContent(JSON.parse(data.content));
+        } else {
+          editor.commands.setContent("");
+        }
+      } catch (error) {
+        console.error("Error fetching memo:", error);
+      }
+    };
 
     fetchContent();
   }, [editor]);
+
+
+
+
+
+      // Add event listener for Mod + Shift + I
+      useEffect(() => {
+        const handleKeyDown = (event) => {
+            // Check for Mod (Cmd/Ctrl) + Shift + I
+            // if ((event.metaKey || event.ctrlKey) && event.shiftKey && event.key === 'i') {
+            if (event.key === 'Escape' || event.metaKey) {
+                event.preventDefault(); // Prevent default behavior (e.g., opening browser dev tools)
+                editor.commands.blur(); // Blur the editor
+            }
+        };
+
+        // Attach the event listener to the editor's DOM element
+        const editorElement = editorRef.current;
+        if (editorElement) {
+            editorElement.addEventListener('keydown', handleKeyDown);
+        }
+
+        // Cleanup the event listener on unmount
+        return () => {
+            if (editorElement) {
+                editorElement.removeEventListener('keydown', handleKeyDown);
+            }
+        };
+    }, [editor]); // Depend on the editor instance
 
 
 
@@ -112,12 +149,12 @@ const Editor = ({ selectedDate, setSelectedDate, selectedDay, isToday, clientWee
                 <FontAwesomeIcon icon={faChevronLeft} className='editor-back-button-icon' />
             </div> */}
             <Link href="/" onClick={handleNavigateBack} className='editor-back-button'>
-                <FontAwesomeIcon icon={faChevronLeft} className='editor-back-button-icon' />
+                <FontAwesomeIcon icon={faChevronLeft} style={{ width: '20px', height: '20px' }} className='editor-back-button-icon' />
             </Link>
             <div className='editor-date'>{selectedDate.slice(5, 7)}/{selectedDate.slice(8, 10)} {selectedDay}</div>
             <div className='editor-date-spacer'></div>
         </div>
-        <EditorContent editor={editor} className='editor-content' />
+        <EditorContent editor={editor} className='editor-content' ref={editorRef} />
         <div className='done-button-container'>
             {/* <div className='done-button' onClick={() => {
                 upsertPost({date: selectedDate, content: JSON.stringify(editor.getJSON())})

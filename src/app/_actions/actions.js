@@ -28,7 +28,6 @@ export async function getPost(date){
          }
     });  
     const postContent = post?.content
-    console.log(postContent);
     return decrypt(postContent);
 }
 

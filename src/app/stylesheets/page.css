@@ -118,7 +118,7 @@
   max-width: 100%;
   /* padding: 5px; */
   border-left: 0.5px solid rgb(54, 54, 54);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-family: var(--font-inter);
   font-weight: 400;
   display: flex;
@@ -249,3 +249,7 @@
     color: white;
   }
 }
+
+
+
+

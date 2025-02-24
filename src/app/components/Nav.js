@@ -24,7 +24,7 @@ export default async function Nav() {
                         </Link>
                 </div>
             </div>
-            <a href="/" className="nav-title">Loose Calendar <span>FTW</span></a>
+            <Link href="/" className="nav-title">Loose Calendar <span>FTW</span></Link>
             <div className='nav-right'>
                 {/* <div className='nav-link'>
                     <div className='about-link-wrapper'>

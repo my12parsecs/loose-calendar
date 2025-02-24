@@ -2,6 +2,7 @@
 import { Inter, Cardo } from "next/font/google";
 
 import "./stylesheets/globals.css";
+import Hotkeys from "./components/Hotkeys";
 
 
 
@@ -47,6 +48,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} ${cardo.variable}`}>
+        <Hotkeys />
         {children}
       </body>
     </html>
