@@ -58,7 +58,7 @@ export default function RenderMemoC({ clientWeek, which, number, index }) {
         const sanitizedHTML = generatedHTML ? DOMPurify.sanitize(generatedHTML) : null;
         
         return (
-          <Link href={`/${dateKey}`} className='day-right' key={idx}>
+          <Link href={`/${dateKey}`} className='day-right' key={idx} prefetch={true}>
             <div className="day-right-inner" dangerouslySetInnerHTML={{ __html: sanitizedHTML }}></div>
           </Link>
         );

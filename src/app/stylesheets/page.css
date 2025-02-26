@@ -123,6 +123,15 @@
   justify-content: center;
   /* margin-top: -4px; */
 }
+.day-left-inner {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+  }
+}
 .day-right{
   border-top: 0.5px solid rgb(54, 54, 54);
   height: calc(100%/7);
@@ -163,7 +172,7 @@
 .slug-page{
   width: 100%;
   max-width: 500px;
-  height: calc(100% - var(--nav-height));
+  height: calc(100dvh - var(--nav-height));
   margin: auto;
   border-left: 0.5px solid rgb(54, 54, 54);
   border-right: 0.5px solid rgb(54, 54, 54);

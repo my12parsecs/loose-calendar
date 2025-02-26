@@ -8,8 +8,6 @@ export function SignOut() {
 
   const handleLogout = async () => {
     await signOut({ redirect: false }); // Prevent NextAuth's default redirect
-    // router.push("/"); // Handle redirect manually
-    // router.refresh()
     window.location.reload()
   };
 

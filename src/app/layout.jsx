@@ -23,12 +23,12 @@ const garamond = EB_Garamond({
 
 
 export const metadata = {
-  title: "Loose Calendar for the Week",
-  description: "Loose Calendar for the Week is a Calendar where each day has a little memo. You just use it for this week.",
-  keywords: ['loose', 'calendar', 'memo', 'week', 'loose calendar', 'loose calendar for the week'],
+  title: "Loose Calendar",
+  description: "Loose Calendar is a Calendar where each day has a little memo.",
+  keywords: ['loose', 'calendar', 'memo', 'week', 'loose calendar'],
   openGraph: {
-    title: 'Loose Calendar for the Week',
-    description: 'Loose Calendar for the Week is a Calendar where each day has a little memo. You just use it for this week.',
+    title: 'Loose Calendar',
+    description: 'Loose Calendar is a Calendar where each day has a little memo.',
     url: 'https://loosecal.com',
     images: [
       {
@@ -41,8 +41,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Loose Calendar for the Week',
-    description: 'Loose Calendar for the Week is a Calendar where each day has a little memo. You just use it for this week.',
+    title: 'Loose Calendar',
+    description: 'Loose Calendar is a Calendar where each day has a little memo.',
     images: ['https://utfs.io/f/XBVzUJO68SmlrX8z5gM13s50u9ZcTLxUedCh6PlDAnz72REm'],
   },
 };

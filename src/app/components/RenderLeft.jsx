@@ -39,10 +39,14 @@ export default function RenderLeft({ ClientWeek, which, number, index }) {
   // Only render the actual content client-side after mounting
   return (
     <div className={`day-left ${isToday ? "day-left-today" : ""}`} key={index}>
-      <div className="day-left-date">
-        {/* <span>{thisWeek[index]?.date?.slice(5, 7)}/</span> */}
-        {thisWeek[index]?.date?.slice(8, 10)}</div>
-      <div className="day-left-day">{day}</div>
+      <div className="day-left-inner">
+        <div className="day-left-date">
+          {/* <span>{thisWeek[index]?.date?.slice(5, 7)}/</span> */}
+          {/* {thisWeek[index]?.date?.slice(8, 10)} */}
+          {thisWeek[index]?.date?.slice(8, 9) == 0 ? thisWeek[index]?.date?.slice(9, 10) : thisWeek[index]?.date?.slice(8, 10)}
+        </div>
+        <div className="day-left-day">{day}</div>
+      </div>
     </div>
   );
 }

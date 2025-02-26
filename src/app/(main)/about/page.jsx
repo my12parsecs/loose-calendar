@@ -6,7 +6,6 @@ import getUserLocale from 'get-user-locale';
 
 import "../../stylesheets/about.css";
 import ClientTimeLocale from "../../components/ClientTimeLocale";
-import ProductHunt from '../../components/ProductHunt';
 
 
 export const metadata = {
@@ -34,8 +33,6 @@ export default function About() {
         <div className='go-to-calendar-button-container'>
             <Link href="/" className='go-to-calendar-button'>Go to Loose Calendar</Link>
         </div>
-
-        <ProductHunt />
 
     </div>
     )

@@ -14,6 +14,7 @@
     border-top: 0.5px solid rgb(54, 54, 54);
 }
 .nav-left{
+    width: 45.5px;
 }
 .nav-month-container{
     /* padding-left: 15px; */
@@ -56,11 +57,24 @@
     /* width: 170px; */
     /* text-align: center; */
     padding-left: 10px;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 400;
     font-family: var(--font-logo);
     /* font-family: Georgia, 'Times New Roman', Times, serif; */
     /* margin-top: 3px; */
+}
+@media (min-width: 420px) {
+    .nav-title{
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        padding: 0px;
+    }
+}
+.nav-title-short{
+    display: none;
 }
 .nav-title span{
     font-size: 10px;
@@ -173,5 +187,13 @@
     .nav-title{
         /* padding-left: 10px; */
         display: none;
+    }
+    .nav-title-short{
+        display: flex;
+        flex-grow: 1;
+        padding-left: 10px;
+        font-size: 26px;
+        font-weight: 400;
+        font-family: var(--font-logo);
     }
 }

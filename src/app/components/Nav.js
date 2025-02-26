@@ -21,6 +21,7 @@ export default async function Nav() {
                 <NavMonth />
             </div>
             <Link href="/" className="nav-title">Loose Calendar</Link>
+            <Link href="/" className="nav-title-short">LC</Link>
             <div className='nav-right'>
                 {session ? <SignOut /> : <Link href={"/login"} className="login-button">Login</Link>}
                 <div className='menu-link-wrapper'>

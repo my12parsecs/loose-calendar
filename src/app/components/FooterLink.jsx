@@ -4,11 +4,16 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
 export default function FooterLink({ which }) {
   const router = useRouter();
   const path = usePathname();
-  console.log(path);
+
+  useEffect(() => {
+    router.prefetch("/next/1")
+    router.prefetch("/prev/1")
+  }, [])
 
   const numberRegex = /^(\d+)$/;
 
