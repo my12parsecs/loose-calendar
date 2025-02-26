@@ -9,6 +9,8 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
 import HardBreak from '@tiptap/extension-hard-break'
+import ListKeymap from '@tiptap/extension-list-keymap';
+import Link from '@tiptap/extension-link';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
@@ -40,6 +42,8 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek }) => {
             placeholder: ""
         }),
         // CustomHardBreak
+        ListKeymap,
+        Link
     ],
     content: '',
     onUpdate: ({ editor }) => {
