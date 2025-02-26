@@ -4,7 +4,7 @@ import "../../stylesheets/menu.css";
 import Link from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faCircleInfo, faKeyboard } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo, faKeyboard, faPenNib } from "@fortawesome/free-solid-svg-icons";
 import { auth } from "../../../../auth";
 
 export default async function Menu() {
@@ -22,6 +22,10 @@ export default async function Menu() {
         <Link className="menu-link-item" href="/about">
           <FontAwesomeIcon icon={faCircleInfo} className="menu-icon" />
           <div className="menu-link-text">About</div>
+        </Link>
+        <Link className="menu-link-item" href="/editor">
+          <FontAwesomeIcon icon={faPenNib} className="menu-icon-key" />
+          <div className="menu-link-text">Editor Tips</div>
         </Link>
         <Link className="menu-link-item" href="/hotkeys">
           <FontAwesomeIcon icon={faKeyboard} className="menu-icon-key" />
