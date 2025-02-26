@@ -14,11 +14,10 @@
     border-top: 0.5px solid rgb(54, 54, 54);
 }
 .nav-left{
-    width: 120px;
 }
 .nav-month-container{
     /* padding-left: 15px; */
-    width: 45px;
+    width: 45.5px;
     height: 45px;
     display: flex;
     align-items: flex-end;
@@ -54,7 +53,10 @@
     filter: opacity(0.8);
 }
 .nav-title {
-    text-align: center;
+    flex-grow: 1;
+    /* width: 170px; */
+    /* text-align: center; */
+    padding-left: 10px;
     font-size: 25px;
     font-weight: 400;
     /* font-family: var(--font-inter); */
@@ -162,11 +164,12 @@
 }
 
 
-@media (max-width: 370px) {
+@media (max-width: 340px) {
     .nav-left{
-        display: none;
+        /* display: none; */
     }
     .nav-title{
-        padding-left: 10px;
+        /* padding-left: 10px; */
+        display: none;
     }
 }
