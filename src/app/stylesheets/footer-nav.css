@@ -64,7 +64,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* font-family: var(--font-cardo); */
     font-size: 1.3rem;
     font-weight: 500;
 }

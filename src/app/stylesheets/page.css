@@ -89,7 +89,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* font-family: var(--font-cardo); */
   font-family: serif;
   position: relative;
 }

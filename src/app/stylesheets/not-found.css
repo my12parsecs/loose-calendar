@@ -9,13 +9,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100dvh - 35.5px);
+    height: calc(100dvh - var(--nav-height) - 0.5px);
     padding-bottom: 80px;
 }
 
 .not-found-title{
-    font-family: var(--font-cardo);
+    font-family: var(--font-logo);
     font-size: 40px;
+    font-weight: 400;
 }
 .not-found-text{}
 .not-found-return{

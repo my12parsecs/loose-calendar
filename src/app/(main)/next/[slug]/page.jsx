@@ -3,8 +3,6 @@ import "../../../stylesheets/page.css";
 
 import ClientWeek from "../../../components/ClientWeek";
 import RenderMemo from "../../../components/RenderMemo";
-import RenderDate from "../../../components/RenderDate";
-import RenderDay from "../../../components/RenderDay";
 import RenderLeft from "../../../components/RenderLeft";
 import ShortcutMenu from "../../../components/ShortcutMenu";
 import { redirect } from "next/navigation";

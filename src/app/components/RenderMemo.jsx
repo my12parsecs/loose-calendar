@@ -49,7 +49,6 @@ export default function RenderMemoC({ clientWeek, which, number, index }) {
     return <div>No data available</div>;
   }
   
-  // Render content when data is available
   return (
     <div style={{height: '100%', width: '100%'}}>
       {weekData.map((day, idx) => {

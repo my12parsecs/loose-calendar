@@ -20,14 +20,6 @@ export default function FooterLink({ which }) {
   const isNextOne = isNextPath && currentNumber === 1;
   const isPrevOne = isPrevPath && currentNumber === 1;
 
-  const goToNextOne = () => router.push("/next/1");
-  const goToPrevOne = () => router.push("/prev/1");
-
-  const goToNextHigher = () => router.push(`/next/${currentNumber + 1}`);
-  const goToNextLower = () => router.push(`/next/${currentNumber - 1}`);
-
-  const goToPrevHigher = () => router.push(`/prev/${currentNumber + 1}`);
-  const goToPrevLower = () => router.push(`/prev/${currentNumber - 1}`);
 
   let navigationRoute = "/";
 
@@ -45,8 +37,6 @@ export default function FooterLink({ which }) {
   }
 
 
-  
-
   let pathDisplay = ""
   if (path === "/") {
     pathDisplay = "0"
@@ -63,9 +53,4 @@ export default function FooterLink({ which }) {
         {which === "prev" && <FontAwesomeIcon icon={faChevronLeft} className="footer-icon" />}
       </Link>
   );
-  // return <div onClick={()=>{router.push("/next/1");}}>next</div>
-
-  // return(
-  //     <Link href={"/"} className="footer-link"></Link>
-  // )
 }

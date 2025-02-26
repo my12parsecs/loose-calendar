@@ -14,10 +14,6 @@ import { revalidatePath } from "next/cache";
 export default async function Menu() {
   const session = await auth()
 
-// console.log(session.user.id);
-
-//   if (!session?.user) return redirect("/")
-
   return (
     <div className="account-page">
         <h1>Account</h1>

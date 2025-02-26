@@ -1,27 +1,3 @@
-// "use client"
-
-// import ClientToday from './ClientToday';
-
-// export default function RenderLeft({ClientWeek, which, number, index}){
-
-//     const thisWeek = ClientWeek(which, number).thisWeek
-//     let isToday = false
-
-//     if(ClientToday().today.slice(0, 10) === thisWeek?.[index]?.date?.slice(0, 10)){
-//         isToday = true
-//     }
-
-//     return (
-//         <div className={`day-left ${isToday ? "day-left-today" : ""}`} key={index}>
-//             {/* {index === 0 ? (
-//                 thisWeek?.[index]?.date?.slice(5, 6) == "0" ? <div className='day-left-month'>{thisWeek?.[index]?.date?.slice(6, 7)}</div> : <div className='day-left-month'>{thisWeek?.[index]?.date?.slice(5, 7)}</div>
-//             ) : null} */}
-//             <div className="day-left-date">{thisWeek?.[index]?.date?.slice(8, 10)}</div>
-//             <div className="day-left-day">{thisWeek[index]?.day}</div>
-//         </div>
-//     )
-// }
-
 "use client";
 
 import { useEffect, useState } from "react";

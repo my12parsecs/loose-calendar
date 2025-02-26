@@ -14,14 +14,13 @@
 
 .login-title{
     text-align: center;
-    font-size: 40px;
-    font-weight: 400;
-    /* font-family: var(--font-inter); */
-    font-family: var(--font-cardo);
+    font-size: 45px;
+    font-weight: 500;
+    font-family: var(--font-logo);
 }
 .login-text{
     font-family: var(--font-inter);
-    font-size: 16px;
+    font-size: 15px;
     filter: opacity(0.8);
 }
 

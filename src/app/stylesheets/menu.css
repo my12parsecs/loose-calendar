@@ -17,8 +17,8 @@
 
 .menu-page > h1{
     font-size: 2rem;
-    font-weight: 400;
-    font-family: var(--font-cardo);
+    font-weight: 500;
+    font-family: var(--font-logo);
     line-height: 1.05;
     padding: 35px 15px 10px 15px;
     border-bottom: 0.5px solid rgb(54, 54, 54);
@@ -37,10 +37,11 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    font-size: 19px;
+    font-size: 21px;
     padding-left: 20px;
     border-bottom: 0.5px solid rgb(54, 54, 54);
-    font-family: var(--font-cardo);
+    font-family: var(--font-logo);
+    font-weight: 500;
 }
 @media (prefers-color-scheme: light) {
     .menu-link-item{
@@ -79,4 +80,6 @@
 }
 .menu-link-text{
     margin-left: 10px;
+    display: flex;
+    align-items: center;
 }

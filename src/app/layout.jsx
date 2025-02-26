@@ -1,5 +1,5 @@
 
-import { Inter, Cardo } from "next/font/google";
+import { Inter, EB_Garamond } from "next/font/google";
 
 import "./stylesheets/globals.css";
 import Hotkeys from "./components/Hotkeys";
@@ -11,9 +11,13 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const cardo = Cardo({
-  weight: "400",
-  variable: "--font-cardo",
+// const cardo = Cardo({
+//   weight: "400",
+//   variable: "--font-cardo",
+//   subsets: ["latin"],
+// });
+const garamond = EB_Garamond({
+  variable: "--font-logo",
   subsets: ["latin"],
 });
 
@@ -47,7 +51,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${cardo.variable}`}>
+      <body className={`${inter.variable} ${garamond.variable}`}>
         <Hotkeys />
         {children}
       </body>
