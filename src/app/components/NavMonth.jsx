@@ -37,9 +37,11 @@ export default function NavMonth() {
     setMonthName(calculatedMonth);
   }, [firstDayOfWeek]);
 
-  return (<div className="nav-month-container">
-    <div className="nav-month">{monthNumber}</div>
-  </div>);
+  return (
+    (path === "/" || pathParts[0] == "next" || pathParts[0] == "prev") &&  <div className="nav-month-container">
+        <div className="nav-month">{monthNumber}</div>
+      </div>
+    );
 }
 
 

@@ -1,4 +1,5 @@
 
+import Link from "next/link"
 import "../stylesheets/footer-nav.css"
 import FooterLink from "./FooterLink"
 
@@ -6,9 +7,9 @@ export default function FooterNav() {
     
     return (
         <div className="footer-nav">
-            <div className="footer-nav-left">
+            <Link href="/" className="footer-nav-left">
                 <FooterLink which="path" />
-            </div>
+            </Link>
             <div className="footer-nav-right">
                 <FooterLink which="prev" />
                 <FooterLink which="next" />
