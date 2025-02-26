@@ -49,6 +49,10 @@
     width: calc(100% - 50px);
     /* flex-grow: 1; */
 }
+.footer-icon{
+    width: 15px;
+    height: 15px;
+}
 
 .path-display{
     /* width: 35px; */
