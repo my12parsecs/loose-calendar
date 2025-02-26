@@ -5,7 +5,7 @@
     width: 100%;
     max-width: 500px;
     height: auto !important;
-    min-height: calc(100dvh - 35px);
+    min-height: calc(100dvh - var(--nav-height));
     margin: auto;
     border-left: 0.5px solid rgb(54, 54, 54);
     border-right: 0.5px solid rgb(54, 54, 54);
@@ -68,6 +68,12 @@
     width: 19px;
     height: 19px;
     border-radius: 100px;
+    margin-left: 1px;
+    margin-right: 3px;
+}
+.menu-icon-key{
+    width: 19px;
+    height: 19px;
     margin-left: 1px;
     margin-right: 3px;
 }

@@ -21,7 +21,7 @@ export const metadata = {
 export default function About() {
 
     return (
-    <div className="about-page" style={{height: '100%', minHeight: 'calc(100dvh - 35px)'}}>
+    <div className="about-page" style={{height: '100%'}}>
         <h1>Loose Calendar</h1>
         <h2>is a Calendar where each day has a little memo.</h2>
         <p>Don't need something fancy and complicated like Google Calendar? Use this!</p>

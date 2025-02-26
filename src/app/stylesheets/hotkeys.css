@@ -1,8 +1,7 @@
 
 
 
-
-.about-page{
+.page{
     width: 100%;
     max-width: 500px;
     height: auto !important;
@@ -13,57 +12,50 @@
     border-bottom: 0.5px solid rgb(54, 54, 54);
     padding: 35px 15px 30px 15px;
 }
-
-.about-page > h1{
+.page > h1{
     font-size: 2rem;
     font-weight: 400;
     font-family: var(--font-cardo);
     line-height: 1.05;
 }
-.about-page > h2{
+.page > h2{
     font-size: 1rem;
     font-weight: 400;
     font-family: var(--font-inter);
     /* font-family: var(--font-cardo); */
     margin-top: 10px;
 }
-.about-page > p{
+.page > p{
     font-size: 1rem;
     font-weight: 400;
     font-family: var(--font-inter);
     /* font-family: var(--font-cardo); */
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     line-height: 23px;
 }
 
-.about-page > div{
-    margin-top: 30px;
-}
 
-.go-to-calendar-button-container{
+.key-row{
+    width: 90%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 230px;
-    height: 40px;
     margin: auto;
-    margin-top: 30px !important;
-    font-family: var(--font-cardo);
-    font-size: 1.3rem;
-    /* text-decoration: underline; */
-    border: 1px solid rgb(54, 54, 54);
-    border-radius: 4px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
-.go-to-calendar-button:hover{
-    filter: brightness(1.4);
-}
-
-.product-hunt-container{
-    width: 100%;
-    height: auto;
-    margin-top: 30px;
+.key-action{}
+.key-middle{
+    flex-grow: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: scale(0.8);
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
 }
+.key-line{
+    border-bottom: 1px dotted rgb(54, 54, 54);
+    height: 50%;
+}
+.key-space{
+    height: 50%;
+}
+.key-key{}

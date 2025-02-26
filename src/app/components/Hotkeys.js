@@ -3,6 +3,7 @@
 import { useHotkeys } from "react-hotkeys-hook";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import dayjs from "dayjs";
+import ClientWeek from "./ClientWeek";
 
 export default function Hotkeys() {
   const router = useRouter();
@@ -64,16 +65,23 @@ export default function Hotkeys() {
   const goToPrevLower = () => router.push(`/prev/${currentNumber - 1}`);
 
   // Now call all hooks unconditionally
-  useHotkeys(
-    "b",
-    () => {
-      if (isDatePath) goHome();
-    },
-    { enableOnFormTags: true }
-  );
+  // useHotkeys(
+  //   "b",
+  //   () => {
+  //     if (isDatePath) goHome();
+  //   },
+  //   { enableOnFormTags: true }
+  // );
+  useHotkeys('p', () => {
+    router.push("/")
+  });
+
+  useHotkeys('b', () => {
+    window.history.back();
+  });
 
   useHotkeys(
-    "k",
+    "l",
     () => {
       if (isDatePath) goNext();
     },
@@ -81,7 +89,7 @@ export default function Hotkeys() {
   );
 
   useHotkeys(
-    "j",
+    "h",
     () => {
       if (isDatePath) goPrev();
     },
@@ -89,7 +97,7 @@ export default function Hotkeys() {
   );
 
   useHotkeys(
-    "l",
+    "k",
     () => {
       if (isDatePath) {
         goNextWeek();
@@ -109,7 +117,7 @@ export default function Hotkeys() {
   );
 
   useHotkeys(
-    "h",
+    "j",
     () => {
       if (isDatePath) {
         goPrevWeek();
@@ -148,8 +156,36 @@ export default function Hotkeys() {
     //     }
     //   }, { enableOnFormTags: true });
 
+
+
+    const thisWeek = ClientWeek(pathParts[0], pathParts[1]).thisWeek;
+    
+    useHotkeys('s+u', () => {router.push(`/${thisWeek?.[0].date.slice(0, 10)}`);});
+    useHotkeys('m', () => {router.push(`/${thisWeek?.[1].date.slice(0, 10)}`);});
+    useHotkeys('t+u', () => {router.push(`/${thisWeek?.[2].date.slice(0, 10)}`);});
+    useHotkeys('w', () => {router.push(`/${thisWeek?.[3].date.slice(0, 10)}`);});
+    useHotkeys('t+h', () => {router.push(`/${thisWeek?.[4].date.slice(0, 10)}`);});
+    useHotkeys('f', () => {router.push(`/${thisWeek?.[5].date.slice(0, 10)}`);});
+    useHotkeys('s+a', () => {router.push(`/${thisWeek?.[6].date.slice(0, 10)}`);});
+
+    
+
+
   return null;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 'use client';
 

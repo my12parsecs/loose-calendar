@@ -52,11 +52,13 @@
 
 
 
-
+.main-page{
+  height: calc(100dvh - var(--nav-height));
+}
 .main{
   width: 100%;
   max-width: 500px;
-  height: calc(100% - 35px);
+  height: calc(100% - var(--footer-height));
   margin: auto;
   border-left: 0.5px solid rgb(54, 54, 54);
   border-right: 0.5px solid rgb(54, 54, 54);
@@ -87,7 +89,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: var(--font-cardo);
+  /* font-family: var(--font-cardo); */
+  font-family: serif;
+  position: relative;
 }
 .day-left-today{
   background-color: rgb(54, 54, 54);
@@ -99,16 +103,26 @@
     color: white;
   }
 }
+.day-left-month{
+  position: absolute;
+  top: 0;
+}
 .day-left-date{
   font-size: 1.6rem;
   display: flex;
   justify-content: center;
+  /* align-items: flex-end; */
+}
+.day-left-date > span{
+  font-size: 1rem;
+  margin-right: 1px;
+  margin-top: -5px;
 }
 .day-left-day{
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   display: flex;
   justify-content: center;
-  margin-top: -4px;
+  /* margin-top: -4px; */
 }
 .day-right{
   border-top: 0.5px solid rgb(54, 54, 54);
@@ -127,7 +141,8 @@
   overflow: hidden;
 }
 .day-right-inner{
-  margin: 4px;
+  /* margin: 4px; */
+  padding: 4px;
   width: 100%;
   height: 100%;
   /* height: 93%; */
@@ -149,7 +164,7 @@
 .slug-page{
   width: 100%;
   max-width: 500px;
-  height: calc(100% - 35px);
+  height: calc(100% - var(--nav-height));
   margin: auto;
   border-left: 0.5px solid rgb(54, 54, 54);
   border-right: 0.5px solid rgb(54, 54, 54);
@@ -206,7 +221,9 @@
   }
 }
 .editor-back-button-icon{
-  font-size: 0.95rem;
+  /* font-size: 0.95rem; */
+  width: 18px;
+  height: 18px;
   cursor: pointer;
 }
 .editor-date{

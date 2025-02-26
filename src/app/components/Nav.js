@@ -9,6 +9,7 @@ import "../stylesheets/nav.css";
 // import { AuthButton } from './Auth';
 import { auth } from "../../../auth";
 import { SignOut } from "./SignOut";
+import NavMonth from "./NavMonth";
 
 
 export default async function Nav() {
@@ -17,14 +18,9 @@ export default async function Nav() {
     return (
         <div className="nav">
             <div className='nav-left'>
-                {/* <AuthButton /> */}
-                <div className='menu-link-wrapper'>
-                        <Link href="/menu" className='menu-link'>
-                            <FontAwesomeIcon icon={faGear} className="menu-icon" />
-                        </Link>
-                </div>
+                <NavMonth />
             </div>
-            <Link href="/" className="nav-title">Loose Calendar <span>FTW</span></Link>
+            <Link href="/" className="nav-title">Loose Calendar</Link>
             <div className='nav-right'>
                 {/* <div className='nav-link'>
                     <div className='about-link-wrapper'>
@@ -41,6 +37,11 @@ export default async function Nav() {
                     </div>
                 </div> */}
                 {session ? <SignOut /> : <Link href={"/login"} className="login-button">Login</Link>}
+                <div className='menu-link-wrapper'>
+                        <Link href="/menu" className='menu-link'>
+                            <FontAwesomeIcon icon={faGear} className="menu-icon" />
+                        </Link>
+                </div>
             </div>
 
         </div>

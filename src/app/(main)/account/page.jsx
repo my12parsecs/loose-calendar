@@ -19,7 +19,7 @@ export default async function Menu() {
 //   if (!session?.user) return redirect("/")
 
   return (
-    <div className="account-page" style={{height: '100%', minHeight: 'calc(100dvh - 35px)'}}>
+    <div className="account-page">
         <h1>Account</h1>
 
         {!session?.user ? (

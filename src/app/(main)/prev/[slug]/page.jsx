@@ -26,8 +26,6 @@ export default async function Home({params}) {
                 <RenderMemo clientWeek={ClientWeek} which="prev" number={slug} />
             </div>
 
-            <div className="footer-nav"></div>
-
             <ShortcutMenu />
 
         </div>

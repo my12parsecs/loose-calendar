@@ -1,6 +1,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --nav-height: 45px;
+  --footer-height: 50px;
+  --minus: calc(var(--nav-height) + var(--footer-height));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -52,7 +55,7 @@ a {
   width: 100%;
   max-width: 500px;
   height: auto !important;
-  min-height: calc(100dvh - 35px);
+  min-height: calc(100dvh - var(--nav-height));
   margin: auto;
   border-left: 0.5px solid rgb(54, 54, 54);
   border-right: 0.5px solid rgb(54, 54, 54);

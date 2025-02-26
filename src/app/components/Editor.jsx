@@ -126,6 +126,7 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek }) => {
 
     // Handle navigation with background save
     const handleNavigateBack = () => {
+        window.history.back();
         const content = JSON.stringify(editor.getJSON());
           upsertPost({
             date: selectedDate,
@@ -148,9 +149,9 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek }) => {
             >
                 <FontAwesomeIcon icon={faChevronLeft} className='editor-back-button-icon' />
             </div> */}
-            <Link href="/" onClick={handleNavigateBack} className='editor-back-button'>
-                <FontAwesomeIcon icon={faChevronLeft} style={{ width: '20px', height: '20px' }} className='editor-back-button-icon' />
-            </Link>
+            <div onClick={handleNavigateBack} className='editor-back-button'>
+                <FontAwesomeIcon icon={faChevronLeft} className='editor-back-button-icon' />
+            </div>
             <div className='editor-date'>{selectedDate.slice(5, 7)}/{selectedDate.slice(8, 10)} {selectedDay}</div>
             <div className='editor-date-spacer'></div>
         </div>
@@ -161,7 +162,7 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek }) => {
             //   setSelectedDate("")
                 router.push("/")
             }}>Done</div> */}
-            <Link href="/" onClick={handleNavigateBack} className='done-button'>Done</Link>
+            <div onClick={handleNavigateBack} className='done-button'>Done</div>
         </div>
     </div>
   )

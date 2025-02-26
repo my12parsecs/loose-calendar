@@ -8,11 +8,14 @@ import RenderMemo from "../components/RenderMemo";
 // import RenderDay from "../components/RenderDay";
 import RenderLeft from "../components/RenderLeft";
 import ShortcutMenu from "../components/ShortcutMenu";
+import FooterNav from "../components/FooterNav";
+
 
 export default function Home() {
 
   return (
-    <div className="main">
+    <div className="main-page">
+      <div className="main">
         <div className="main-left">
         {Array.from({ length: 7 }).map((_, index) => (
             // <div className={`day-left ${isToday ? "day-left-today" : ""}`} key={index}>
@@ -30,10 +33,10 @@ export default function Home() {
             <RenderMemo clientWeek={ClientWeek} which="this" number={0} />
         </div>
 
-    <div className="footer-nav"></div>
+      <ShortcutMenu which="main" />
 
-    <ShortcutMenu which="main" />
-
+      </div>
+      <FooterNav />
     </div>
   );
 }
