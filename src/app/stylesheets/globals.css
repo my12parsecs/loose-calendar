@@ -95,3 +95,37 @@ a {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+span[data-time-range] {
+  background-color: var(--foreground);
+  color: var(--background);
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-right: 2px;
+}
+.time-tag{
+  background-color: var(--foreground);
+  color: var(--background);
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-right: 5px;
+}

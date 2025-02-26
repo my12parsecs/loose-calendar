@@ -1,10 +1,13 @@
 
 "use client"
+
 import { generateHTML } from '@tiptap/core'
 import StarterKit from "@tiptap/starter-kit";
+import EditorLink from '@tiptap/extension-link';
 import DOMPurify from "dompurify";
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import TimeRangeExtension from './TimeRangeExtension';
 
 export default function RenderMemo({ clientWeek, which, number, index }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -55,12 +58,31 @@ export default function RenderMemo({ clientWeek, which, number, index }) {
         const dateKey = day?.date.slice(0, 10);
         
         const dayContent = apiResponse?.[dateKey];
-        const generatedHTML = dayContent ? generateHTML(dayContent, [StarterKit]) : null;
+        const generatedHTML = dayContent ? generateHTML(dayContent, [StarterKit, TimeRangeExtension, EditorLink.configure({
+          defaultProtocol: 'https',
+          protocols: ['https', 'http'],
+          // HTMLAttributes: {
+          //     target: '_blank',
+          // }
+        })]) : null;
+        DOMPurify.setConfig({
+          ALLOWED_ATTR: ['href', 'title', 'target', 'rel']
+        });
+
         const sanitizedHTML = generatedHTML ? DOMPurify.sanitize(generatedHTML) : null;
         
         return (
           <Link href={`/${dateKey}`} className='day-right' key={idx} prefetch={true}>
-            <div className="day-right-inner" dangerouslySetInnerHTML={{ __html: sanitizedHTML }}></div>
+            <div className="day-right-inner" dangerouslySetInnerHTML={{ __html: sanitizedHTML }}             onClick={(e) => {
+              if (e.target.tagName === "A") {
+                e.stopPropagation(); // Prevent Link from triggering
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.target.tagName === "A" && e.key === "Enter") {
+                e.stopPropagation(); // Prevent Link activation on Enter key
+              }
+            }}></div>
           </Link>
         );
       })}
