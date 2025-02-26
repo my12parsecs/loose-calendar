@@ -6,7 +6,7 @@ import DOMPurify from "dompurify";
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-export default function RenderMemoC({ clientWeek, which, number, index }) {
+export default function RenderMemo({ clientWeek, which, number, index }) {
   const [isLoading, setIsLoading] = useState(true);
   const [weekData, setWeekData] = useState(null);
   const [apiResponse, setApiResponse] = useState(null);
@@ -37,7 +37,7 @@ export default function RenderMemoC({ clientWeek, which, number, index }) {
         <div style={{height: '100%', width: '100%'}}>
             {Array.from({ length: 7 }).map((_, index) => (
                 <div className='day-right' key={index}>
-                    <div className='className="day-right-inner"'></div>
+                    <div className="day-right-inner"></div>
                 </div>
             ))}
         </div>
@@ -53,7 +53,8 @@ export default function RenderMemoC({ clientWeek, which, number, index }) {
     <div style={{height: '100%', width: '100%'}}>
       {weekData.map((day, idx) => {
         const dateKey = day?.date.slice(0, 10);
-        const dayContent = apiResponse?.[dateKey]?.content?.[0];
+        
+        const dayContent = apiResponse?.[dateKey];
         const generatedHTML = dayContent ? generateHTML(dayContent, [StarterKit]) : null;
         const sanitizedHTML = generatedHTML ? DOMPurify.sanitize(generatedHTML) : null;
         
