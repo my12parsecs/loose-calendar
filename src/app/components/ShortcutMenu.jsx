@@ -13,7 +13,7 @@ export default function ShortcutMenu({which}) {
     useEffect(()=>{
         const storedValue = localStorage.getItem("shortcut-menu");
         // Only update state if localStorage contains a value
-        setIsClosed(storedValue === "true");
+        setIsClosed(storedValue === null ? true : storedValue === "true");
     }, [])
 
       // Don't render until we've checked localStorage
