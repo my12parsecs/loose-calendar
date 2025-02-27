@@ -13,7 +13,7 @@
 .editor-menu-tab{
     width: 30px;
     height: 70px;
-    background-color: #171717;
+    background-color: var(--background);
     cursor: pointer;
     border-radius: 5px 0px 0px 5px;
     display: flex;
@@ -32,7 +32,7 @@
 .editor-menu{
     /* width: 100px; */
     /* height: 100px; */
-    background-color: #171717;
+    background-color: var(--background);
     cursor: pointer;
     padding: 15px;
     border-radius: 10px 0px 0px 10px;

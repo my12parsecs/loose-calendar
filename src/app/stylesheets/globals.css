@@ -28,6 +28,11 @@ body {
   height: 100%;
   position: relative;
   overflow-x: hidden;
+
+  /* Paper-like background */
+  /* background: no-repeat url(https://github.com/caph1993/GMeetMono/blob/main/paper-transparent.png?raw=true); */
+  background: no-repeat url(/paper-transparent.png);
+  background-repeat: repeat;
 }
 
 
@@ -63,6 +68,25 @@ a {
   border-left: 0.5px solid rgb(54, 54, 54);
   border-right: 0.5px solid rgb(54, 54, 54);
   border-bottom: 0.5px solid rgb(54, 54, 54);
+  padding: 35px 15px 30px 15px;
+}
+.page > h1{
+  font-size: 2rem;
+  font-weight: 400;
+  font-family: var(--font-logo);
+  font-weight: 500;
+  line-height: 1.05;
+}
+.page > p{
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: var(--font-inter);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  line-height: 23px;
+}
+.page > a{
+  text-decoration: underline;
 }
 
 
