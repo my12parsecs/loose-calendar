@@ -9,6 +9,12 @@ import HardBreak from '@tiptap/extension-hard-break'
 import ListKeymap from '@tiptap/extension-list-keymap';
 import EditorLink from '@tiptap/extension-link';
 import TimeRangeExtension from './TimeRangeExtension';
+import EditorMenu from './EditorMenu';
+import {EditorTryObject} from './EditorTryObject';
+
+// import "../stylesheets/page.css";
+import "../stylesheets/editor-menu.css";
+import "../stylesheets/editor.css";
 
 
 
@@ -31,10 +37,13 @@ const EditorTry = () => {
             defaultProtocol: 'https',
             protocols: ['https', 'http'],
         }),
-        TimeRangeExtension
+        TimeRangeExtension,
     ],
-    content: '',
+    content: EditorTryObject,
     onUpdate: ({ editor }) => {
+        const content = editor.getJSON();
+        console.log(content);
+        
 
 
       const { state } = editor;
@@ -167,7 +176,7 @@ const EditorTry = () => {
         const handleKeyDown = (event) => {
             // Check for Mod (Cmd/Ctrl) + Shift + I
             // if ((event.metaKey || event.ctrlKey) && event.shiftKey && event.key === 'i') {
-            if (event.key === 'Escape' || event.metaKey) {
+            if (event.key === 'Escape') {
                 event.preventDefault(); // Prevent default behavior (e.g., opening browser dev tools)
                 editor.commands.blur(); // Blur the editor
             }
@@ -194,6 +203,7 @@ const EditorTry = () => {
   return (
     <div className='editor-try-container'>
         <EditorContent editor={editor} className='editor-try' ref={editorRef} />
+        <EditorMenu />
     </div>
   )
 }

@@ -28,18 +28,23 @@
 
 
 .editor-try-container{
-    width: 90%;
-    height: 300px;
+    width: 97%;
+    min-height: 300px;
     margin: auto;
     margin-top: 30px;
 }
 .editor-try{
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
+    min-height: 300px;
+    overflow-y: auto;
     border: 1px solid var(--foreground);
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .editor-try ul {
     padding-left: 1.1rem;
@@ -49,10 +54,10 @@
   }
   .editor-try p {
     margin-top: 0.4rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 1.5rem !important;
   }
   .editor-try p{
-    min-height: 1.1rem;
+    min-height: 1.1rem !important;
   }
   .editor-try a {
     text-decoration: underline;

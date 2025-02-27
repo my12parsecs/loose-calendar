@@ -19,6 +19,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { upsertPost} from '../_actions/actions';
 import { useRouter } from 'next/navigation';
 import ClientToday from './ClientToday';
+import EditorMenu from './EditorMenu';
 
 
 const Editor = ({ selectedDate, setSelectedDate, clientWeek }) => {
@@ -231,7 +232,7 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek }) => {
         const handleKeyDown = (event) => {
             // Check for Mod (Cmd/Ctrl) + Shift + I
             // if ((event.metaKey || event.ctrlKey) && event.shiftKey && event.key === 'i') {
-            if (event.key === 'Escape' || event.metaKey) {
+            if (event.key === 'Escape') {
                 event.preventDefault(); // Prevent default behavior (e.g., opening browser dev tools)
                 editor.commands.blur(); // Blur the editor
             }
@@ -292,6 +293,8 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek }) => {
             }}>Done</div> */}
             <div onClick={handleNavigateBack} className='done-button'>Done</div>
         </div>
+
+        <EditorMenu />
     </div>
   )
 }
