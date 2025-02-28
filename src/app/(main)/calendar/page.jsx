@@ -1,5 +1,5 @@
 
-import { CalendarPageCalendar } from "../../components/CalendarPageCalendar";
+import CalendarPageCalendar from "../../components/CalendarPageCalendar";
 import "../../stylesheets/calendar-page.css";
 
 export default function CalendarPage() {
