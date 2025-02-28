@@ -1,5 +1,10 @@
+
 import { redirect } from "next/navigation";
 import { auth, signIn } from "../../../auth";
+import BackButton from "../components/BackButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 import "../stylesheets/login.css";
 
@@ -16,8 +21,13 @@ export default async function Login() {
 
   return (
     <div className="login-page">
+      {/* <BackButton /> */}
+      <Link href="/" className="back-button">
+        <FontAwesomeIcon icon={faChevronLeft} className="back-button-icon" />
+      </Link>
       <h1 className="login-title">Loose Calendar</h1>
       <p className="login-text">Sign in to access from any device.</p>
+      <p className="login-desc">When not signed in, your data is saved on your browser's local storage.</p>
       {/* <img src="https://utfs.io/f/XBVzUJO68SmlrX8z5gM13s50u9ZcTLxUedCh6PlDAnz72REm" alt="" /> */}
       <form
         className="login-form"
@@ -25,7 +35,6 @@ export default async function Login() {
           "use server";
           await signIn("google");
         }}>
-        {/* <button className="login-button" type="submit">Signin with Google</button> */}
         <button className="gsi-material-button" type="submit">
           <div className="gsi-material-button-state" />
           <div className="gsi-material-button-content-wrapper">

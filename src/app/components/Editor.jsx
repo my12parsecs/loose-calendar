@@ -22,19 +22,25 @@ import ClientToday from './ClientToday';
 import EditorMenu from './EditorMenu';
 
 
-const Editor = ({ selectedDate, setSelectedDate, clientWeek }) => {
-    const router = useRouter()
-    const editorRef = useRef(null);
+const Editor = ({ selectedDate, setSelectedDate, clientWeek, session }) => {
+  const router = useRouter()
+  const editorRef = useRef(null);
 
-    let isToday = false
-    if(ClientToday().today.slice(0, 10) === selectedDate){
-        isToday = true
-    }
+  let isToday = false
+  if(ClientToday().today.slice(0, 10) === selectedDate){
+    isToday = true
+  }
 
-    let selectedDay = dayjs(selectedDate).format("ddd")
+  let selectedDay = dayjs(selectedDate).format("ddd")
+
+  
 
   const debouncedContent = useDebouncedCallback((content) => {
-    upsertPost({date: selectedDate, content: content})
+    if(session != null){
+      upsertPost({date: selectedDate, content: content})
+    }else{
+      localStorage.setItem(selectedDate, content);
+    }
   }, 500);
     
   const editor = useEditor({
@@ -208,18 +214,26 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek }) => {
     //     }}
 
     const fetchContent = async () => {
-      try {
-        const res = await fetch(`/api/getPost?date=${selectedDate}`);
-        const data = await res.json();        
-        
-        if (data.content) {
-          editor.commands.setContent(JSON.parse(data.content));
-        } else {
-          editor.commands.setContent("");
+      if(session != null){
+        try {
+          const res = await fetch(`/api/getPost?date=${selectedDate}`);
+          const data = await res.json();        
+          
+          if (data.content) {
+            editor.commands.setContent(JSON.parse(data.content));
+          } else {
+            editor.commands.setContent("");
+          }
+        } catch (error) {
+          console.error("Error fetching memo:", error);
         }
-      } catch (error) {
-        console.error("Error fetching memo:", error);
+      }else{
+        const savedContent = localStorage.getItem(`${selectedDate}`);
+        if (savedContent) {
+          editor?.commands.setContent(JSON.parse(savedContent));
+        }
       }
+
     };
 
     fetchContent();
@@ -257,12 +271,17 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek }) => {
     const handleNavigateBack = () => {
         window.history.back();
         const content = JSON.stringify(editor.getJSON());
+        if(session != null){
           upsertPost({
             date: selectedDate,
             content: content
           }).catch(error => {
             console.error("Background save error:", error);
           });
+        }else{
+          localStorage.setItem(selectedDate, content);
+        }
+
       };
       
 

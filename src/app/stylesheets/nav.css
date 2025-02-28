@@ -56,15 +56,15 @@
     filter: opacity(0.8);
 }
 .nav-title {
-    flex-grow: 1;
     /* width: 170px; */
     /* text-align: center; */
     padding-left: 10px;
     font-size: 26px;
     font-weight: 400;
     font-family: var(--font-logo);
-    /* font-family: Georgia, 'Times New Roman', Times, serif; */
     /* margin-top: 3px; */
+    width: 160px;
+    text-align: center;
 }
 @media (min-width: 420px) {
     .nav-title{
@@ -77,11 +77,11 @@
         padding: 0px; */
 
         position: relative; /* This allows the element to scroll with the page */
-        left: 40%; /* Move from the left edge to the middle */
+        left: 23.5%; /* Move from the left edge to the middle */
         transform: translateX(-50%); /* Pull back by half the element's width */
         text-align: center;
         padding: 0px;
-        width: fit-content; /* Only take up as much space as needed */
+        /* width: fit-content; */
     }
 }
 .nav-title-short{

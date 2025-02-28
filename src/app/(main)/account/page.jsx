@@ -36,35 +36,6 @@ export default async function Menu() {
 
                 <div className="account-danger-zone">
                     <DeleteAccountForm />
-                    {/* <form
-                        action={async () => {
-                        "use server"
-                            if(!session.user) return
-                            try {
-                                // First, delete all posts associated with the user
-                                await prisma.post.deleteMany({
-                                  where: {
-                                    userId: session.user.id
-                                  }
-                                });
-                                // Then delete the user
-                                await prisma.user.delete({
-                                  where: {
-                                    id: session.user.id,
-                                    email: session.user.email
-                                  }
-                                });
-
-                            } catch (error) {
-                                console.error("Error deleting account:", error);
-                                throw new Error("Failed to delete account. Please try again later.");
-                            }
-                            redirect("/")
-                        }}
-                    >
-                        <button className="delete-account-button" type="submit">Delete Account</button>
-                        <div className="delete-account-warning">This action cannot be undone. All your data will be deleted as well.</div>
-                    </form> */}
                 </div>
             </div>
         )}

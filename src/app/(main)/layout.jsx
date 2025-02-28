@@ -1,5 +1,7 @@
 
 import Nav from "../components/Nav";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 export default function Layout({ children }) {
 
@@ -7,6 +9,7 @@ export default function Layout({ children }) {
     <div>
       <Nav />
       {children}
+      <Toaster />
     </div>
   );
 }

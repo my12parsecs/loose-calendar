@@ -7,9 +7,11 @@ import RenderMemo from "../components/RenderMemo";
 import RenderLeft from "../components/RenderLeft";
 import ShortcutMenu from "../components/ShortcutMenu";
 import FooterNav from "../components/FooterNav";
+import { auth } from "../../../auth";
 
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth()
 
   return (
     <div className="main-page">
@@ -20,7 +22,7 @@ export default function Home() {
         ))}
         </div>
         <div className="main-right">
-            <RenderMemo clientWeek={ClientWeek} which="this" number={0} />
+            <RenderMemo clientWeek={ClientWeek} which="this" number={0} session={session} />
         </div>
 
       <ShortcutMenu which="main" />

@@ -55,7 +55,6 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${garamond.variable}`}>
         <Hotkeys />
         {children}
-        <Toaster />
       </body>
     </html>
   );

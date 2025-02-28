@@ -58,11 +58,6 @@ export async function upsertPost({date, content}){
 
 
 export async function deleteUser(enteredEmail){
-    // const enteredEmail = formData[0]
-    console.log(enteredEmail);
-    
-    
-
     const session = await auth()
     if (!session?.user) return null
 

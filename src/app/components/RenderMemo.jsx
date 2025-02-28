@@ -9,24 +9,38 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import TimeRangeExtension from './TimeRangeExtension';
 
-export default function RenderMemo({ clientWeek, which, number, index }) {
+export default function RenderMemo({ clientWeek, which, number, index, session }) {
   const [isLoading, setIsLoading] = useState(true);
   const [weekData, setWeekData] = useState(null);
   const [apiResponse, setApiResponse] = useState(null);
   
   useEffect(() => {
     const loadData = async () => {
-      try {
-        // Get static week data and fetch function
+      if(session != null){
+        try {
+          // Get static week data and fetch function
+          const clientWeekData = clientWeek(which, number);
+          setWeekData(clientWeekData.thisWeek);
+          
+          // Fetch API data
+          const response = await clientWeekData.fetchWeekData();        
+          setApiResponse(response);
+        } catch (error) {
+          console.error("Error loading data:", error);
+        } finally {
+          setIsLoading(false);
+        }
+      }else{
         const clientWeekData = clientWeek(which, number);
         setWeekData(clientWeekData.thisWeek);
-        
-        // Fetch API data
-        const response = await clientWeekData.fetchWeekData();        
-        setApiResponse(response);
-      } catch (error) {
-        console.error("Error loading data:", error);
-      } finally {
+        let tempApiResponse = {}
+        for(let i = 0; i < 7; i++){
+          const date = clientWeekData.thisWeek[i].date.slice(0, 10);
+          const eachContent =localStorage.getItem(date);
+          const parsedContent = JSON.parse(eachContent);
+          tempApiResponse[date] = parsedContent;
+        }
+        setApiResponse(tempApiResponse);
         setIsLoading(false);
       }
     };
@@ -50,7 +64,7 @@ export default function RenderMemo({ clientWeek, which, number, index }) {
   // No data yet
   if (!weekData) {
     return <div>No data available</div>;
-  }
+  }  
   
   return (
     <div style={{height: '100%', width: '100%'}}>
@@ -73,7 +87,7 @@ export default function RenderMemo({ clientWeek, which, number, index }) {
         
         return (
           <Link href={`/${dateKey}`} className='day-right' key={idx} prefetch={true}>
-            <div className="day-right-inner" dangerouslySetInnerHTML={{ __html: sanitizedHTML }}             onClick={(e) => {
+            <div className="day-right-inner" dangerouslySetInnerHTML={{ __html: sanitizedHTML }} onClick={(e) => {
               if (e.target.tagName === "A") {
                 e.stopPropagation(); // Prevent Link from triggering
               }

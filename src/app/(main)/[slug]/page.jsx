@@ -5,6 +5,7 @@ import Editor from "../../components/Editor";
 import { notFound } from 'next/navigation';
 import ClientWeek from "../../components/ClientWeek";
 import ShortcutMenu from "../../components/ShortcutMenu";
+import { auth } from "../../../../auth";
 
 export default async function Slug({params}) {
     const slug = (await params).slug
@@ -13,6 +14,8 @@ export default async function Slug({params}) {
     if (!slugRegex.test(slug)) {
       notFound();
     }
+
+    const session = await auth()
 
     const year = slug.slice(0, 4)
     const month = slug.slice(5, 7);
@@ -23,7 +26,7 @@ export default async function Slug({params}) {
     return (
     <div className="slug-page">
         {/* <Tiptap selectedDate={`${month}-${day}`} selectedDay={selectedDay} /> */}
-        <Editor selectedDate={slug} selectedDay={selectedDay} clientWeek={ClientWeek} /> 
+        <Editor selectedDate={slug} selectedDay={selectedDay} clientWeek={ClientWeek} session={session} /> 
         <ShortcutMenu which="slug" />  
     </div>
     )
