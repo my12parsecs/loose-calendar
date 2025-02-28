@@ -14,24 +14,10 @@ import getUserLocale from "get-user-locale";
 var utc = require("dayjs/plugin/utc");
 var timezone = require("dayjs/plugin/timezone");
 
-const tz = jstz.determine();
-const userTimezone = tz.name();
-
-const userLocale = getUserLocale();
-const userLanguage = userLocale.slice(0, 2);
-
-require(`dayjs/locale/${userLanguage}`);
-dayjs.locale(userLanguage);
-dayjs.extend(utc)
-dayjs.extend(timezone)
-
-let monthNames = []
-for (let i = 0; i < 12; i++) {
-  monthNames.push(dayjs().startOf("year").add(i, "month").format("MMMM"));
-}
-
 // import LocaleData from "dayjs/plugin/localeData";
 // dayjs.extend(LocaleData);
+
+let monthNames = []
 
 let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -50,6 +36,32 @@ const CalendarObjectGenerator = (currentDate) => {
 export default function CalendarPageCalendar ({ which, number }) {
     const router = useRouter();
     const path = usePathname();
+
+
+
+
+
+
+    const tz = jstz.determine();
+    const userTimezone = tz.name();
+    
+    const userLocale = getUserLocale();
+    const userLanguage = userLocale.slice(0, 2);
+    
+    require(`dayjs/locale/${userLanguage}`);
+    dayjs.locale(userLanguage);
+    dayjs.extend(utc)
+    dayjs.extend(timezone)
+    
+    for (let i = 0; i < 12; i++) {
+      monthNames.push(dayjs().startOf("year").add(i, "month").format("MMMM"));
+    }
+
+
+
+
+
+
     
   const thisWeek = ClientWeek(which, number).thisWeek;
   weekDays = thisWeek.map((day) => day.day);
