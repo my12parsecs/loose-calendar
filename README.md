@@ -14,5 +14,4 @@ If you're on desktop, [Hotkeys](https://loosecal.com/hotkeys) are useful.
 
 
 
-
 Site link: [https://loosecal.com](https://loosecal.com)
