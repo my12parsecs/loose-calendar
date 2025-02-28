@@ -45,23 +45,24 @@ export const Calendar = ({ which, number }) => {
 
 
 
-    const tz = jstz.determine();
-    const userTimezone = tz.name();
-    
-    const userLocale = getUserLocale();
-    const userLanguage = userLocale.slice(0, 2);
-    
-    require(`dayjs/locale/${userLanguage}`);
-    dayjs.locale(userLanguage);
-    dayjs.extend(utc)
-    dayjs.extend(timezone)
-    
-    for (let i = 0; i < 12; i++) {
-      monthNames.push(dayjs().startOf("year").add(i, "month").format("MMMM"));
-    }
 
 
-
+    useEffect(()=>{
+        const tz = jstz.determine();
+        const userTimezone = tz.name();
+        
+        const userLocale = getUserLocale();
+        const userLanguage = userLocale.slice(0, 2);
+        
+        require(`dayjs/locale/${userLanguage}`);
+        dayjs.locale(userLanguage);
+        dayjs.extend(utc)
+        dayjs.extend(timezone)
+        
+        for (let i = 0; i < 12; i++) {
+          monthNames.push(dayjs().startOf("year").add(i, "month").format("MMMM"));
+        }
+    }, [])
 
 
 
