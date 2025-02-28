@@ -9,9 +9,29 @@ import { useEffect, useState } from "react";
 import ClientWeek from "./ClientWeek";
 import ClientToday from "./ClientToday";
 
-import LocaleData from "dayjs/plugin/localeData";
+import jstz from "jstimezonedetect";
+import getUserLocale from "get-user-locale";
+var utc = require("dayjs/plugin/utc");
+var timezone = require("dayjs/plugin/timezone");
 
-dayjs.extend(LocaleData);
+const tz = jstz.determine();
+const userTimezone = tz.name();
+
+const userLocale = getUserLocale();
+const userLanguage = userLocale.slice(0, 2);
+
+require(`dayjs/locale/${userLanguage}`);
+dayjs.locale(userLanguage);
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
+let monthNames = []
+for (let i = 0; i < 12; i++) {
+  monthNames.push(dayjs().startOf("year").add(i, "month").format("MMMM"));
+}
+
+// import LocaleData from "dayjs/plugin/localeData";
+// dayjs.extend(LocaleData);
 
 let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -21,7 +41,7 @@ const CalendarObjectGenerator = (currentDate) => {
   return {
     days: Array.from({ length: currentDate.daysInMonth() }, (_, index) => index + 1),
     day: Number(currentDate.format("DD")),
-    months: currentDate.localeData().months(),
+    months: monthNames,
     prevMonthDays: Array.from({ length: firstDayOfCurrentMonth }, (_, index) => numOfDaysInPrevMonth - index).reverse(),
     remainingDays: Array.from({ length: 6 - currentDate.endOf("month").day() }, (_, index) => index + 1),
   };

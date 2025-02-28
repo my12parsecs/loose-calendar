@@ -120,6 +120,7 @@
 }
 .day-left-day{
   font-size: 0.9rem;
+  font-weight: 500;
   display: flex;
   justify-content: center;
   /* margin-top: -4px; */

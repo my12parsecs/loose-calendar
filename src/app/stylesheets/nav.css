@@ -84,6 +84,13 @@
         /* width: fit-content; */
     }
 }
+@media (max-width: 420px) and (min-width: 340px) {
+    .nav-title{
+        flex-grow: 1;
+        display: flex;
+        justify-content: left;
+    }
+}
 .nav-title-short{
     display: none;
 }

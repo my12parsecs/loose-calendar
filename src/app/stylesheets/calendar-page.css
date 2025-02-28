@@ -137,7 +137,10 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 1px solid transparent;
+    /* border: 1px solid transparent; */
+    border: none;
+    width: 100%;
+    height: 100%;
     z-index: 200;
 }
 
@@ -190,7 +193,9 @@ button {
     border: 1px solid #1a73e8;
 }
 
-
+.page-text{
+    color: var(--foreground);
+}
 
 
 
@@ -201,6 +206,11 @@ button {
     /* background-color: #7411f6; */
     /* background-color: #5805ff0d; */
     border: 1.5px solid #7411f6;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .page-calendar-this-week-day .page-text {
@@ -250,9 +260,11 @@ div.page-calendar-day:nth-child(7n) {
 .page-today-indicator {
     background-color: #6a00f5;
     color: white;
+    /* width: 70%; */
+    /* height: 70%; */
     width: 100%;
-    height: 100%;
-    border-radius: 30px;
+    aspect-ratio: 1 / 1;
+    border-radius: 300px;
 }
 .page-today-indicator .page-text{
     color: white;
