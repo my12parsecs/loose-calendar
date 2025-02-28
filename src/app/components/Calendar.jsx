@@ -72,8 +72,6 @@ export const Calendar = ({ which, number }) => {
   const thisWeek = ClientWeek(which, number).thisWeek;
   weekDays = thisWeek.map((day) => day.day);
   const clientToday = ClientToday();
-  console.log(clientToday);
-  
   const cleanThisWeek = thisWeek.map((day) => {
     return day.date.slice(0, 10);
   });

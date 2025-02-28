@@ -47,7 +47,7 @@ const CalendarObjectGenerator = (currentDate) => {
   };
 };
 
-export const CalendarPageCalendar = ({ which, number }) => {
+export default function CalendarPageCalendar ({ which, number }) {
     const router = useRouter();
     const path = usePathname();
     
