@@ -5,7 +5,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import ClientWeek from "./ClientWeek";
 import ClientToday from "./ClientToday";
 
@@ -57,8 +57,9 @@ export default function CalendarPageCalendar ({ which, number }) {
       for (let i = 0; i < 12; i++) {
         monthNames.push(dayjs().startOf("year").add(i, "month").format("MMMM"));
       }
-  }, [])
+      setClientToday(ClientToday())    
 
+  }, [])
 
 
 
@@ -67,7 +68,14 @@ export default function CalendarPageCalendar ({ which, number }) {
     
   const thisWeek = ClientWeek(which, number).thisWeek;
   weekDays = thisWeek.map((day) => day.day);
-  const clientToday = ClientToday();
+  const [clientToday, setClientToday] = useState(ClientToday());
+  // const clientToday = ClientToday();
+
+  console.log(clientToday)
+  
+
+  
+  
   const cleanThisWeek = thisWeek.map((day) => {
     return day.date.slice(0, 10);
   });
@@ -108,6 +116,7 @@ export default function CalendarPageCalendar ({ which, number }) {
     // setCurrentDate(dayInNextMonth);
     router.push(`/${day}`);
   };  
+
 
   return (
     <div className="page-calendar__container">

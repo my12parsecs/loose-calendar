@@ -62,6 +62,7 @@ export const Calendar = ({ which, number }) => {
         for (let i = 0; i < 12; i++) {
           monthNames.push(dayjs().startOf("year").add(i, "month").format("MMMM"));
         }
+        setClientToday(ClientToday())
     }, [])
 
 
@@ -72,10 +73,15 @@ export const Calendar = ({ which, number }) => {
     
   const thisWeek = ClientWeek(which, number).thisWeek;
   weekDays = thisWeek.map((day) => day.day);
-  const clientToday = ClientToday();
+//   const clientToday = ClientToday();
+  const [clientToday, setClientToday] = useState(ClientToday());
+  // const clientToday = ClientToday();
+  
   const cleanThisWeek = thisWeek.map((day) => {
     return day.date.slice(0, 10);
   });
+  
+  
 
   const [currentDate, setCurrentDate] = useState(dayjs(thisWeek[3]?.date?.slice(0, 10)));
   const [tempCurrentDate, setTempCurrentDate] = useState(dayjs(thisWeek[3]?.date?.slice(0, 10)));
