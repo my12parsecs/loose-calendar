@@ -281,6 +281,47 @@ export const EditorTryObject = {
         "content": [
           {
             "type": "text",
+            "text": "Links"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "You can write/paste URLs."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "marks": [
+              {
+                "type": "link",
+                "attrs": {
+                  "href": "https://google.com",
+                  "target": "_blank",
+                  "rel": "noopener noreferrer nofollow",
+                  "class": null
+                }
+              }
+            ],
+            "text": "https://google.com"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "attrs": {
+          "level": 2
+        },
+        "content": [
+          {
+            "type": "text",
             "text": "Other Stuff"
           }
         ]
@@ -331,13 +372,31 @@ export const EditorTryObject = {
         ]
       },
       {
-        "type": "paragraph"
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "---Line"
+          }
+        ]
       },
       {
-        "type": "paragraph"
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "*{text}* Italic"
+          }
+        ]
       },
       {
-        "type": "paragraph"
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "**{text}** Bold"
+          }
+        ]
       },
       {
         "type": "paragraph"

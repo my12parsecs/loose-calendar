@@ -41,7 +41,7 @@ export default function ShortcutMenu({which}) {
                         <div className="editor-menu-row"><span className="syntax">@13-15</span> <span className="time-tag">@13:00~15:00</span></div>
                         <div className="editor-menu-row"><span className="syntax">@7.3-14.2</span> <span className="time-tag">@7:30~14:20</span></div>
                         <div className="editor-menu-row"><span className="syntax">@7.3-</span> <span className="time-tag">@7:30~</span></div>
-                        <Link href={"/editor"} className="editor-menu-link">More about time stamps</Link>
+                        <Link href="/editor" className="editor-menu-link">More about time stamps</Link>
                     </div>
                 </div>
             ) }

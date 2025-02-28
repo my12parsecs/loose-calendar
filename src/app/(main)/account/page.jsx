@@ -10,6 +10,7 @@ import { redirect } from "next/navigation";
 import ClientTimeLocale from "../../components/ClientTimeLocale";
 import prisma from "../../../../lib/prisma";
 import { revalidatePath } from "next/cache";
+import DeleteAccountForm from "../../components/DeleteAccountForm";
 
 export default async function Menu() {
   const session = await auth()
@@ -34,7 +35,8 @@ export default async function Menu() {
                 </div>
 
                 <div className="account-danger-zone">
-                    <form
+                    <DeleteAccountForm />
+                    {/* <form
                         action={async () => {
                         "use server"
                             if(!session.user) return
@@ -61,8 +63,8 @@ export default async function Menu() {
                         }}
                     >
                         <button className="delete-account-button" type="submit">Delete Account</button>
-                        <div className="delete-account-warning">This action cannot be undone.</div>
-                    </form>
+                        <div className="delete-account-warning">This action cannot be undone. All your data will be deleted as well.</div>
+                    </form> */}
                 </div>
             </div>
         )}

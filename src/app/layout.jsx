@@ -3,6 +3,7 @@ import { Inter, EB_Garamond } from "next/font/google";
 
 import "./stylesheets/globals.css";
 import Hotkeys from "./components/Hotkeys";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${garamond.variable}`}>
         <Hotkeys />
         {children}
+        <Toaster />
       </body>
     </html>
   );

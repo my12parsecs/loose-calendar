@@ -33,7 +33,7 @@ export default function ShortcutMenu({which}) {
                     }}>
                     <FontAwesomeIcon icon={faXmark} className="shortcut-icon" />
                 </div>
-                <Link href={"/hotkeys"} className="shortcut-title">Hotkeys</Link>
+                <Link href="/hotkeys" className="shortcut-title">Hotkeys</Link>
                 <div className="shortcut-item"><div className="shortcut-key">B</div><div className="shortcut-colon">:</div><div className="shortcut-action">Back</div></div>
                 <div className="shortcut-item"><div className="shortcut-key">P</div><div className="shortcut-colon">:</div><div className="shortcut-action">Go to Present</div></div>
                 {which !== "slug" ? <div className="shortcut-item"><div className="shortcut-key">SU</div><div className="shortcut-colon">:</div><div className="shortcut-action">Sunday</div></div>: null}

@@ -133,7 +133,7 @@
 .about-icon{
     width: 17px;
     height: 17px;
-    filter: opacity(0.8);
+    /* filter: opacity(0.8); */
 }
 .github-link-wrapper{
     width: 17px;
@@ -149,7 +149,7 @@
 .github-icon{
     width: 17px;
     height: 17px;
-    filter: opacity(0.8);
+    /* filter: opacity(0.8); */
 }
 
 

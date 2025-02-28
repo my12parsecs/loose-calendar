@@ -77,29 +77,116 @@
     margin-bottom: 30px;
     border: 0.5px solid red;
     border-radius: 5px;
-    height: 100px;
+    /* height: 120px; */
     background: rgba(255, 0, 0, 0.181);
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.delete-account-form{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .delete-account-button{
     /* background-color: var(--foreground); */
-    background-color: red;
+    background-color: rgb(194, 0, 0);
     /* color: var(--background); */
     color: white;
     font-weight: 500;
     font-size: 16px;
-    width: 200px;
-    height: 30px;
+    width: 180px;
+    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 200px;
+    border-radius: 90px;
     border: none;
     cursor: pointer;
 }
 .delete-account-warning{
+    width: 270px;
+    /* text-align: center; */
     font-size: 15px;
-    margin-top: 7px;
+    /* margin-top: 7px; */
+    margin-bottom: 20px;
+}
+
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    width: 270px;
+    height: 35px;
+    background-color: rgb(35, 35, 35);
+    color: white;
+    /* border: 0.5px solid var(--background); */
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding-left: 7px;
+    font-size: 0.95rem;
+    outline: none;
+    border: 1px solid rgb(67, 67, 67);
+}
+input:focus {
+    /* outline: 1px solid rgb(67, 67, 67); */
+    outline: none;
+    border: 1px solid rgb(109, 109, 109);
+  }
+@media (prefers-color-scheme: light) {
+    input{
+        /* background-color: rgb(249, 249, 247); */
+        background-color: var(--background);
+        color: black;
+        border: 1px solid rgb(134, 134, 134);
+    }
+    input:focus {
+        outline: none;
+        border: 1px solid rgb(46, 46, 46);
+      }
+}
+
+.form-button-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    width: 270px;
+}
+.form-cancel{
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    cursor: pointer;
+}
+.form-cancel:focus{
+    color: blue;
+}
+.form-submit{
+    background-color: rgb(194, 0, 0);
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    width: 200px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.error-message{
+    margin-top: 15px;
+    color: var(--foreground);
+    /* color: red; */
+    font-size: 15px;
 }

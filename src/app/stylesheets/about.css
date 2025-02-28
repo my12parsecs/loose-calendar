@@ -51,6 +51,7 @@
     /* text-decoration: underline; */
     border: 1px solid rgb(54, 54, 54);
     border-radius: 4px;
+    cursor: pointer;
 }
 .go-to-calendar-button:hover{
     filter: brightness(1.4);

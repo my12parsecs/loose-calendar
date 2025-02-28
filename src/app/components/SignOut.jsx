@@ -12,8 +12,6 @@ export function SignOut() {
   };
 
   return (
-    <div onClick={handleLogout} className="logout-button">
-      Logout
-    </div>
+    <div onClick={handleLogout} className="logout-button">Logout</div>
   );
 }
