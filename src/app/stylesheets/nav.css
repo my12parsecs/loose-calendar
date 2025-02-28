@@ -63,7 +63,7 @@
     font-weight: 400;
     font-family: var(--font-logo);
     /* margin-top: 3px; */
-    width: 160px;
+    width: 170px;
     text-align: center;
 }
 @media (min-width: 420px) {

@@ -4,7 +4,7 @@ import "../../stylesheets/menu.css";
 import Link from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faCircleInfo, faKeyboard, faPenNib } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays, faCircleInfo, faKeyboard, faPenNib } from "@fortawesome/free-solid-svg-icons";
 import { auth } from "../../../../auth";
 
 export default async function Menu() {
@@ -30,6 +30,10 @@ export default async function Menu() {
         <Link className="menu-link-item" href="/hotkeys">
           <FontAwesomeIcon icon={faKeyboard} className="menu-icon-key" />
           <div className="menu-link-text">Hotkeys</div>
+        </Link>
+        <Link className="menu-link-item" href="/calendar">
+          <FontAwesomeIcon icon={faCalendarDays} className="menu-icon-cal" />
+          <div className="menu-link-text">Calendar</div>
         </Link>
         <Link className="menu-link-item" href="https://github.com/my12parsecs/loose-calendar" target="_blank" rel="noreferrer">
           <FontAwesomeIcon icon={faGithub} className="menu-icon" />

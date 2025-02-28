@@ -8,6 +8,8 @@ import RenderLeft from "../components/RenderLeft";
 import ShortcutMenu from "../components/ShortcutMenu";
 import FooterNav from "../components/FooterNav";
 import { auth } from "../../../auth";
+import { Calendar } from "../components/Calendar";
+import "../stylesheets/calendar.css";
 
 
 export default async function Home() {
@@ -29,6 +31,9 @@ export default async function Home() {
 
       </div>
       <FooterNav />
+
+      <Calendar which="this" number={0} />
+
     </div>
   );
 }

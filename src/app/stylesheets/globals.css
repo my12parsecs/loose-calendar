@@ -69,14 +69,16 @@ a {
   border-left: 0.5px solid rgb(54, 54, 54);
   border-right: 0.5px solid rgb(54, 54, 54);
   border-bottom: 0.5px solid rgb(54, 54, 54);
-  padding: 35px 15px 30px 15px;
+  /* padding: 35px 15px 30px 15px; */
 }
 .page > h1{
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 500;
   font-family: var(--font-logo);
   font-weight: 500;
   line-height: 1.05;
+  padding: 35px 15px 10px 15px;
+  /* border-bottom: 0.5px solid rgb(54, 54, 54); */
 }
 .page > p{
   font-size: 1rem;
@@ -85,6 +87,8 @@ a {
   margin-top: 20px;
   margin-bottom: 20px;
   line-height: 23px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .page > a{
   text-decoration: underline;
