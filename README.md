@@ -4,6 +4,7 @@
 
 If you don't like how every other calendar forces you to add "events" and enter the time, this is for you. You can loosely jot down what you need to do each day.
 
+![Screenshot](https://rdhvl74ie8.ufs.sh/f/XBVzUJO68SmlZripCOPmc2LnzkiEKXgCpQWOjRtroIbV6lZ9)
 
 ## Features
 
