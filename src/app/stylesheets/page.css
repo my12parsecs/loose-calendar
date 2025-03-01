@@ -212,7 +212,7 @@
 }
 .editor-date-container{
   width: 100%;
-  height: 35px;
+  height: 45px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -228,14 +228,20 @@
   }
 }
 .editor-back-button{
-  width: 35px;
-  height: 35px;
+  width: 80px;
+}
+.editor-back-button:hover{
+  /* background-color: rgb(35, 35, 35); */
+}
+.editor-back-button-inner{
+  width: 45px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
-.editor-back-button:hover{
+.editor-back-button-inner:hover{
   background-color: rgb(35, 35, 35);
 }
 .editor-date-container-today .editor-back-button:hover{
@@ -264,8 +270,30 @@
   font-weight: 400;
 }
 .editor-date-spacer{
-  width: 35px;
+  /* width: 35px; */
+  width: 80px;
+  display: flex;
+  justify-content: right;
 }
+.editor-top-done{
+  width: 65px;
+  height: 30px;
+  background-color: var(--foreground);
+  color: var(--background);
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+@media (min-width: 440px) {
+  .editor-top-done{
+    display: none;
+  }
+}
+
 .editor-content{
   flex-grow: 1;
   width: 100%;
@@ -301,19 +329,20 @@
 .done-button{
   width: 90%;
   height: 40px;
-  background-color: white;
-  color: black;
+  background-color: var(--foreground);
+  color: var(--background);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
   cursor: pointer;
 }
-
-@media (prefers-color-scheme: light) {
+@media (max-width: 440px) {
   .done-button{
-    background-color: black;
-    color: white;
+    display: none;
+  }
+  .done-button-container{
+    border-top: transparent;
   }
 }
 

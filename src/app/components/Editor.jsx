@@ -297,11 +297,15 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek, session }) => {
             >
                 <FontAwesomeIcon icon={faChevronLeft} className='editor-back-button-icon' />
             </div> */}
-            <div onClick={handleNavigateBack} className='editor-back-button'>
+            <div className='editor-back-button'>
+              <div onClick={handleNavigateBack} className='editor-back-button-inner'>
                 <FontAwesomeIcon icon={faChevronLeft} className='editor-back-button-icon' />
+              </div>
             </div>
             <div className='editor-date'>{selectedDate.slice(5, 7)}/{selectedDate.slice(8, 10)} {selectedDay}</div>
-            <div className='editor-date-spacer'></div>
+            <div className='editor-date-spacer'>
+              <div onClick={handleNavigateBack} className='editor-top-done'>Done</div>
+            </div>
         </div>
         <EditorContent editor={editor} className='editor-content' ref={editorRef} />
         <div className='done-button-container'>

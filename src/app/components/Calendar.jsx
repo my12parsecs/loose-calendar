@@ -190,6 +190,7 @@ import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ClientWeek from "./ClientWeek";
+import ClientWeekFromDay from "./ClientWeekFromDay";
 
 import jstz from "jstimezonedetect";
 import getUserLocale from "get-user-locale";
@@ -225,7 +226,7 @@ const CalendarObjectGenerator = (currentDate) => {
   };
 };
 
-export default function Calendar({ which, number }) {
+export default function Calendar({ which, number, propsCurrentDate }) {
   const router = useRouter();
 
   // State for tracking today's date consistently
@@ -276,6 +277,12 @@ export default function Calendar({ which, number }) {
       if (weekData.thisWeek && weekData.thisWeek.length >= 4) {
         const midWeekDate = dayjs(weekData.thisWeek[3]?.date?.slice(0, 10));
         setCurrentDate(midWeekDate);
+      }
+
+      if(propsCurrentDate){
+        setCurrentDate(dayjs(propsCurrentDate));
+        const propsWeekData = ClientWeekFromDay(propsCurrentDate);
+        setThisWeek(propsWeekData.thisWeek);
       }
 
       // Update weekdays based on locale
