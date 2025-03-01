@@ -8,6 +8,7 @@ import DOMPurify from "dompurify";
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import TimeRangeExtension from './TimeRangeExtension';
+import { DemoMemoObject } from './DemoMemoObject';
 
 export default function RenderMemo({ clientWeek, which, number, index, session }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,17 +32,34 @@ export default function RenderMemo({ clientWeek, which, number, index, session }
           setIsLoading(false);
         }
       }else{
-        const clientWeekData = clientWeek(which, number);
-        setWeekData(clientWeekData.thisWeek);
-        let tempApiResponse = {}
-        for(let i = 0; i < 7; i++){
-          const date = clientWeekData.thisWeek[i].date.slice(0, 10);
-          const eachContent =localStorage.getItem(date);
-          const parsedContent = JSON.parse(eachContent);
-          tempApiResponse[date] = parsedContent;
+        const isNotFirstVisit = localStorage.getItem("isNotFirstVisit");
+        if(isNotFirstVisit){
+          const clientWeekData = clientWeek(which, number);
+          setWeekData(clientWeekData.thisWeek);
+          let tempApiResponse = {}
+          for(let i = 0; i < 7; i++){
+            const date = clientWeekData.thisWeek[i].date.slice(0, 10);
+            const eachContent =localStorage.getItem(date);
+            console.log(typeof eachContent);
+            const parsedContent = JSON.parse(eachContent);
+            tempApiResponse[date] = parsedContent;
+          }
+          setApiResponse(tempApiResponse);
+          setIsLoading(false);
+        }else{
+          localStorage.setItem("isNotFirstVisit", true);
+          const clientWeekData = clientWeek(which, number);
+          setWeekData(clientWeekData.thisWeek);
+          let tempApiResponse = {}
+          for(let i = 0; i < 7; i++){
+            const date = clientWeekData.thisWeek[i].date.slice(0, 10);
+            const eachContent = DemoMemoObject[i];
+            tempApiResponse[date] = eachContent;
+            localStorage.setItem(date, JSON.stringify(eachContent));
+          }
+          setApiResponse(tempApiResponse);
+          setIsLoading(false);
         }
-        setApiResponse(tempApiResponse);
-        setIsLoading(false);
       }
     };
     
