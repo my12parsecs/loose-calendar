@@ -30,10 +30,18 @@ body {
   position: relative;
   overflow-x: hidden;
 
+  background-color: var(--background);
   /* Paper-like background */
   /* background: no-repeat url(https://github.com/caph1993/GMeetMono/blob/main/paper-transparent.png?raw=true); */
   background: no-repeat url(/paper-transparent.png);
+  /* background: no-repeat url(/paper-transparent-light.png); */
   background-repeat: repeat;
+}
+@media (prefers-color-scheme: light) {
+  body{
+    background: no-repeat url(/paper-transparent-light.png);
+    background: repeat;
+  }
 }
 
 
