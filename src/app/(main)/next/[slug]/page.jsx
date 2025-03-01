@@ -5,7 +5,7 @@ import ClientWeek from "../../../components/ClientWeek";
 import RenderMemo from "../../../components/RenderMemo";
 import RenderLeft from "../../../components/RenderLeft";
 import ShortcutMenu from "../../../components/ShortcutMenu";
-import { Calendar } from "../../../components/Calendar";
+import Calendar from "../../../components/Calendar";
 import { redirect } from "next/navigation";
 
 export default async function Home({params}) {

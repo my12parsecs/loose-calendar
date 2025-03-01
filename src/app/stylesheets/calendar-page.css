@@ -29,7 +29,7 @@
     justify-content: left;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: clamp(18px, 4.2vw, 20px);
+    font-size: clamp(20px, 5vw, 25px);
 }
 
 .page-year__layout, .page-month__layout {
@@ -46,6 +46,7 @@
 .page-month__layout{
     flex-grow: 1;
     margin-left: 5px;
+    padding-right: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,7 +54,7 @@
 .page-new-title{
 }
 .page-arrow-container{
-    width: 50px;
+    width: 65px;
     display: flex;
     justify-content: space-between;
     align-items: center;
