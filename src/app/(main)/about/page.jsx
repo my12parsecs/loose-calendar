@@ -9,11 +9,11 @@ import ClientTimeLocale from "../../components/ClientTimeLocale";
 
 
 export const metadata = {
-    title: 'About | Loose Calendar FTW',
-    description: 'About page of Loose Calendar FTW',
+    title: 'About | Loose Calendar',
+    description: 'About page of Loose Calendar',
     openGraph: {
-      title: 'About | Loose Calendar FTW',
-      description: 'About page of Loose Calendar FTW',
+      title: 'About | Loose Calendar',
+      description: 'About page of Loose Calendar',
     },
   }
 
