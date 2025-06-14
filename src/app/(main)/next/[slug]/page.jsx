@@ -9,7 +9,6 @@ import Calendar from "../../../components/Calendar";
 import { redirect } from "next/navigation";
 import { auth } from "../../../../../auth";
 
-export const dynamic = 'force-static' 
 
 export default async function Home({params}) {
     const slug = (await params).slug
