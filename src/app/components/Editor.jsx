@@ -14,7 +14,7 @@ import TimeRangeExtension from './TimeRangeExtension';
 
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faPenNib } from "@fortawesome/free-solid-svg-icons";
 
 import { upsertPost} from '../_actions/actions';
 import { useRouter } from 'next/navigation';
@@ -60,6 +60,7 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek, session }) => {
         TimeRangeExtension
     ],
     content: '',
+    immediatelyRender: false,
     onUpdate: ({ editor }) => {
 
 
@@ -74,7 +75,6 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek, session }) => {
   if (textBeforeCursor.endsWith(' ')) {
     // Regex patterns for each case
     const patterns = [
- 
       {
         regex: /@(\d{2})(\d{2})-(\d{2})(\d{2})\s/,
         replace: (match, h1, m1, h2, m2) => `@${h1}:${m1}~${h2}:${m2}`,
@@ -283,6 +283,10 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek, session }) => {
         }
 
       };
+
+      const handleNavigateEditorTips = () => {
+        router.push("/editor")
+      }
       
 
   return (
@@ -305,6 +309,9 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek, session }) => {
             <div className='editor-date'>{selectedDate.slice(5, 7)}/{selectedDate.slice(8, 10)} {selectedDay}</div>
             <div className='editor-date-spacer'>
               <div onClick={handleNavigateBack} className='editor-top-done'>Done</div>
+              <div onClick={handleNavigateEditorTips} className='editor-top-tips'>
+                  <FontAwesomeIcon icon={faPenNib} className="editor-top-tips-icon" />
+              </div>
             </div>
         </div>
         <EditorContent editor={editor} className='editor-content' ref={editorRef} />
@@ -317,7 +324,7 @@ const Editor = ({ selectedDate, setSelectedDate, clientWeek, session }) => {
             <div onClick={handleNavigateBack} className='done-button'>Done</div>
         </div>
 
-        <EditorMenu />
+        {/* <EditorMenu /> */}
     </div>
   )
 }

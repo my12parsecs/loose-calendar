@@ -80,6 +80,7 @@
   .shortcut-item{
     /* margin-left: 10px; */
     display: flex;
+    margin-top: 3px;
   }
   .shortcut-key{
     width: 30px;

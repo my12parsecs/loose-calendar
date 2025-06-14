@@ -203,7 +203,7 @@ const EditorTry = () => {
   return (
     <div className='editor-try-container'>
         <EditorContent editor={editor} className='editor-try' ref={editorRef} />
-        <EditorMenu />
+        {/* <EditorMenu /> */}
     </div>
   )
 }

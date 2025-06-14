@@ -293,6 +293,29 @@
     display: none;
   }
 }
+.editor-top-tips{
+   width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.editor-top-tips:hover{
+  background-color: rgb(35, 35, 35);
+  cursor: pointer;
+}
+@media (max-width: 440px) {
+  .editor-top-tips{
+    display: none;
+  }
+}
+.editor-top-tips-icon{
+  width: 17px;
+  height: 17px;
+  filter: opacity(0.8);
+  /* margin-right: 1px; */
+}
 
 .editor-content{
   flex-grow: 1;

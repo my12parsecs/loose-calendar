@@ -192,6 +192,8 @@ import { useEffect, useState } from "react";
 import ClientWeek from "./ClientWeek";
 import ClientWeekFromDay from "./ClientWeekFromDay";
 
+import "../stylesheets/calendar.css";
+
 import jstz from "jstimezonedetect";
 import getUserLocale from "get-user-locale";
 import utc from "dayjs/plugin/utc";
