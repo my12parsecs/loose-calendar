@@ -23,9 +23,9 @@ export default async function Nav() {
             <Link href="/" className="nav-title">Loose Calendar</Link>
             <Link href="/" className="nav-title-short">LC</Link>
             <div className='nav-right'>
-                {session ? <SignOut /> : <Link href="/login" className="login-button">Login</Link>}
+                {session ? <SignOut /> : <Link href="/login" className="login-button" prefetch={true}>Login</Link>}
                 <div className='menu-link-wrapper'>
-                        <Link href="/menu" className='menu-link'>
+                        <Link href="/menu" className='menu-link' prefetch={true}>
                             <FontAwesomeIcon icon={faGear} className="menu-icon" />
                         </Link>
                 </div>

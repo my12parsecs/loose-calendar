@@ -19,19 +19,19 @@ export default async function Menu() {
             <div className="menu-link-text">Account</div>
           </Link>
         )}
-        <Link className="menu-link-item" href="/about">
+        <Link className="menu-link-item" href="/about" prefetch={true}>
           <FontAwesomeIcon icon={faCircleInfo} className="menu-icon" />
           <div className="menu-link-text">About</div>
         </Link>
-        <Link className="menu-link-item" href="/editor">
+        <Link className="menu-link-item" href="/editor" prefetch={true}>
           <FontAwesomeIcon icon={faPenNib} className="menu-icon-key" />
           <div className="menu-link-text">Editor Tips</div>
         </Link>
-        <Link className="menu-link-item" href="/hotkeys">
+        <Link className="menu-link-item" href="/hotkeys" prefetch={true}>
           <FontAwesomeIcon icon={faKeyboard} className="menu-icon-key" />
           <div className="menu-link-text">Hotkeys</div>
         </Link>
-        <Link className="menu-link-item" href="/calendar">
+        <Link className="menu-link-item" href="/calendar" prefetch={true}>
           <FontAwesomeIcon icon={faCalendarDays} className="menu-icon-cal" />
           <div className="menu-link-text">Calendar</div>
         </Link>
