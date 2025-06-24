@@ -46,12 +46,18 @@ export const metadata = {
     description: 'Loose Calendar is a Calendar where each day has a little memo.',
     images: ['https://utfs.io/f/XBVzUJO68SmlrX8z5gM13s50u9ZcTLxUedCh6PlDAnz72REm'],
   },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+         <meta name="apple-mobile-web-app-capable" content="yes" />
+         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+         <meta name="theme-color" content="#000000" />
+      </head>
       <body className={`${inter.variable} ${garamond.variable}`}>
         <Hotkeys />
         {children}
