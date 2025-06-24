@@ -30,25 +30,36 @@
 // export default nextConfig;
 
 
-import { withPWA } from 'next-pwa';
 
-const pwa = withPWA({
+
+
+
+
+
+const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
   skipWaiting: true,
-  fallback: {
-    document: '/offline',
-  },
 });
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  experimental: {
-    appDir: true,
+  webpack: (config) => {
+    config.module.rules.push(
+      {
+        // Ignore dayjs locale files to reduce bundle size
+        test: /dayjs[/\\]locale/,
+        use: 'ignore-loader',
+      },
+      {
+        // Ignore `.d.ts` files from webpack processing
+        test: /\.d\.ts$/,
+        use: 'ignore-loader',
+      }
+    );
+
+    return config;
   },
-  // 他の設定があればここに追加
 };
 
-// withPWAでラップしてエクスポート
-module.exports = pwa(nextConfig);
+module.exports = withPWA(nextConfig);
