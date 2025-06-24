@@ -30,9 +30,9 @@
 // export default nextConfig;
 
 
-// next.config.js
+import { withPWA } from 'next-pwa';
 
-const withPWA = require('next-pwa')({
+const withPWA = withPWA({
   dest: 'public',
   register: true,
   skipWaiting: true,
