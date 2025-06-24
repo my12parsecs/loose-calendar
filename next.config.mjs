@@ -32,7 +32,7 @@
 
 import { withPWA } from 'next-pwa';
 
-const withPWA = withPWA({
+const pwa = withPWA({
   dest: 'public',
   register: true,
   skipWaiting: true,
@@ -51,4 +51,4 @@ const nextConfig = {
 };
 
 // withPWAでラップしてエクスポート
-module.exports = withPWA(nextConfig);
+module.exports = pwa(nextConfig);
