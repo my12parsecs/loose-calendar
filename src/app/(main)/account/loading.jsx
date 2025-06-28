@@ -21,7 +21,6 @@ export default function Loading() {
                 </div>
 
                 <div className="account-danger-zone">
-                    {/* <DeleteAccountForm /> */}
                 </div>
             </div>
 
